@@ -55,7 +55,7 @@ const Slider = () => (
         return (
           <SwiperSlide key={index} className="testimonials">
             <div className="client__avatar">
-              <Image src={item.avatar} alt="" />
+              <Image src={item.avatar} alt="" width={100} height={100} />
             </div>
             <h5 className="client__name">{item.name}</h5>
             <small className="client_review">{item.review}</small>

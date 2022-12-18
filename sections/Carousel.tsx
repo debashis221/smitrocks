@@ -7,6 +7,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 import Image from "next/image";
+import ReactFullpage from "@fullpage/react-fullpage";
 
 const data = [
   {
@@ -40,7 +41,7 @@ const data = [
 ];
 const Slider = () => (
   <section>
-    <Swiper
+    {/* <Swiper
       className="container testimonials__container"
       // install Swiper modules
       modules={[Pagination]}
@@ -62,7 +63,49 @@ const Slider = () => (
           </SwiperSlide>
         );
       })}
-    </Swiper>
+    </Swiper><Swiper
+      className="container testimonials__container"
+      // install Swiper modules
+      modules={[Pagination]}
+      slidesPerView={1}
+      navigation
+      pagination={{ clickable: true }}
+      scrollbar={{ draggable: true }}
+      onSwiper={(swiper) => console.log(swiper)}
+      onSlideChange={() => console.log("slide change")}
+    >
+      {data.map((item, index) => {
+        return (
+          <SwiperSlide key={index} className="testimonials">
+            <div className="client__avatar">
+              <Image src={item.avatar} alt="" width={100} height={100} />
+            </div>
+            <h5 className="client__name">{item.name}</h5>
+            <small className="client_review">{item.review}</small>
+          </SwiperSlide>
+        );
+      })}
+    </Swiper> */}
+    <ReactFullpage
+      debug /* Debug logging */
+      // fullpage options
+      licenseKey={"YOUR_KEY_HERE"} // Get one from https://alvarotrigo.com/fullPage/pricing/
+      navigation
+      anchors={["firstPage", "secondPage", "thirdPage"]}
+      render={(comp) => (
+        <ReactFullpage.Wrapper>
+          {data.map((item, index) => (
+            <div key={index}>
+              <div className="client__avatar">
+                <Image src={item.avatar} alt="" width={100} height={100} />
+              </div>
+              <h5 className="client__name">{item.name}</h5>
+              <small className="client_review">{item.review}</small>
+            </div>
+          ))}
+        </ReactFullpage.Wrapper>
+      )}
+    />
   </section>
 );
 

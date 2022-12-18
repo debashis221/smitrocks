@@ -111,7 +111,7 @@ export default function NavBar() {
             </ul>
           </div>
           <a>
-            <Image src="/logo.png" alt="logo" width={100} height="100" />
+            <Image src="/logo.png" alt="logo" width={`200`} height="100" />
           </a>
         </div>
         <div className="navbar-center hidden lg:flex">

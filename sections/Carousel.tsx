@@ -25,6 +25,7 @@ const Carousel = () => {
             alt="image"
             width={500}
             height={500}
+            fill
           />
         </div>
         <div>
@@ -33,6 +34,7 @@ const Carousel = () => {
             alt="image"
             width={500}
             height={500}
+            fill
           />
         </div>
         <div>
@@ -41,6 +43,7 @@ const Carousel = () => {
             alt="image"
             width={500}
             height={500}
+            fill
           />
         </div>
       </Slider>

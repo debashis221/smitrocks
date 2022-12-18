@@ -11,7 +11,7 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
-    domains: ["www.technoindiagroup.com"],
+    domains: ["www.technoindiagroup.com", "c4.wallpaperflare.com"],
   },
 };
 

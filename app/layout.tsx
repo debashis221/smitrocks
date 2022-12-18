@@ -1,18 +1,22 @@
-import './globals.css'
+import { NavBar } from "../components";
+import "./globals.css";
+import { Poppins } from "@next/font/google";
+const poppins = Poppins({ subsets: ["latin"], weight: ["400", "700"] });
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      {/*
-        <head /> will contain the components returned by the nearest parent
-        head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
+    <html lang="en" data-theme="dark">
       <head />
-      <body>{children}</body>
+      <body className={poppins.className}>
+        <div className="relative h-screen overflow-hidden">
+          <NavBar />
+          {children}
+        </div>
+      </body>
     </html>
-  )
+  );
 }

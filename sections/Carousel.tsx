@@ -14,7 +14,6 @@ const Carousel = () => {
     slidesToScroll: 1,
     arrows: true,
     autoplay: true,
-    centerMode: true,
   };
   return (
     <div>

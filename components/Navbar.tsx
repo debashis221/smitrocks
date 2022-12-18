@@ -1,16 +1,65 @@
+import Image from "next/image";
+import { FaFacebook, FaLinkedinIn, FaInstagram, FaPhone } from "react-icons/fa";
+import { FiMail } from "react-icons/fi";
+import logo from "../public/logo.png";
+
 export default function NavBar() {
   return (
     <div>
       <div className="navbar bg-base-300 lg:px-14" data-theme="light">
         <div className="navbar-start">
-          <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+          <a className="btn btn-ghost normal-case text-xl">
+            <FaFacebook />
+          </a>
+          <a className="btn btn-ghost normal-case text-xl">
+            <FaLinkedinIn />
+          </a>
+          <a className="btn btn-ghost normal-case text-xl">
+            <FaInstagram />
+          </a>
+          <div className="hidden lg:flex">
+            <a className="lg:px-5 link link-hover normal-case text-base">
+              Career
+            </a>
+            <a className="lg:px-5 link link-hover normal-case text-base">
+              Pay Online
+            </a>
+            <a className="lg:px-5 link link-hover normal-case text-base">
+              Explore
+            </a>
+          </div>
         </div>
-        <div className="navbar-center hidden lg:flex"></div>
-        <div className="navbar-end">
-          <button className="btn">Get started</button>
+        <div className="navbar-end hidden lg:flex gap-2">
+          <a className="lg:px-5 btn btn-ghost normal-case text-base">
+            <FaPhone />
+          </a>
+          <a>(+91) 6295247210</a>
+          <a className="lg:px-5 btn btn-ghost normal-case text-base">
+            <FiMail />
+          </a>
+          <a>debashissaha221@gmail.com</a>
+        </div>
+        <div className="navbar-end lg:hidden">
+          <button className="btn gap-2 lg:hidden justify-end">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+              />
+            </svg>
+            Call Now
+          </button>
         </div>
       </div>
-      <div className="navbar bg-base-100 lg:px-14">
+      <div className="navbar bg-base-200 lg:px-14 py-5">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -34,11 +83,11 @@ export default function NavBar() {
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <a>Item 1</a>
+                <a>EXPLORE</a>
               </li>
               <li tabIndex={0}>
                 <a className="justify-between">
-                  Parent
+                  ACADEMICS
                   <svg
                     className="fill-current"
                     xmlns="http://www.w3.org/2000/svg"
@@ -59,20 +108,34 @@ export default function NavBar() {
                 </ul>
               </li>
               <li>
-                <a>Item 3</a>
+                <a>CAMPUSES</a>
+              </li>
+              <li>
+                <a>FACILITIES</a>
+              </li>
+              <li>
+                <a>RESEARCH</a>
+              </li>
+              <li>
+                <a>PLACEMENT</a>
+              </li>
+              <li>
+                <a>CONTACT US</a>
               </li>
             </ul>
           </div>
-          <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+          <a>
+            <img src="/logo.png" width={"90%"} height={100} />
+          </a>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
+          <ul tabIndex={0} className="menu menu-horizontal px-1">
             <li>
-              <a>Item 1</a>
+              <a>EXPLORE</a>
             </li>
             <li tabIndex={0}>
-              <a>
-                Parent
+              <a className="justify-between">
+                ACADEMICS
                 <svg
                   className="fill-current"
                   xmlns="http://www.w3.org/2000/svg"
@@ -93,12 +156,21 @@ export default function NavBar() {
               </ul>
             </li>
             <li>
-              <a>Item 3</a>
+              <a>CAMPUSES</a>
+            </li>
+            <li>
+              <a>FACILITIES</a>
+            </li>
+            <li>
+              <a>RESEARCH</a>
+            </li>
+            <li>
+              <a>PLACEMENT</a>
             </li>
           </ul>
         </div>
         <div className="navbar-end">
-          <button className="btn">Get started</button>
+          <button className="btn">Contact Us</button>
         </div>
       </div>
     </div>

@@ -51,14 +51,17 @@ const Slider = () => (
       onSwiper={(swiper) => console.log(swiper)}
       onSlideChange={() => console.log("slide change")}
     >
-      <SwiperSlide>Slide 1</SwiperSlide>
-      <SwiperSlide>Slide 2</SwiperSlide>
-      <SwiperSlide>Slide 1</SwiperSlide>
-      <SwiperSlide>Slide 2</SwiperSlide>
-      <SwiperSlide>Slide 1</SwiperSlide>
-      <SwiperSlide>Slide 2</SwiperSlide>
-      <SwiperSlide>Slide 1</SwiperSlide>
-      <SwiperSlide>Slide 2</SwiperSlide>
+      {data.map((item, index) => {
+        return (
+          <SwiperSlide key={index} className="testimonials">
+            <div className="client__avatar">
+              <Image src={item.avatar} alt="" width={100} height={100} />
+            </div>
+            <h5 className="client__name">{item.name}</h5>
+            <small className="client_review">{item.review}</small>
+          </SwiperSlide>
+        );
+      })}
     </Swiper>
   </section>
 );

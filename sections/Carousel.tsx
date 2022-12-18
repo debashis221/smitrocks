@@ -24,6 +24,9 @@ const Carousel = () => {
             src="https://c4.wallpaperflare.com/wallpaper/808/87/756/son-goku-dragon-ball-ultra-instinct-dragon-ball-super-white-hair-hd-wallpaper-preview.jpg"
             alt="image"
             fill
+            sizes="(max-width: 768px) 100vw,
+            (max-width: 1200px) 50vw,
+            33vw"
           />
         </div>
         <div>
@@ -31,6 +34,9 @@ const Carousel = () => {
             src="https://c4.wallpaperflare.com/wallpaper/808/87/756/son-goku-dragon-ball-ultra-instinct-dragon-ball-super-white-hair-hd-wallpaper-preview.jpg"
             alt="image"
             fill
+            sizes="(max-width: 768px) 100vw,
+            (max-width: 1200px) 50vw,
+            33vw"
           />
         </div>
         <div>
@@ -38,6 +44,9 @@ const Carousel = () => {
             src="https://c4.wallpaperflare.com/wallpaper/808/87/756/son-goku-dragon-ball-ultra-instinct-dragon-ball-super-white-hair-hd-wallpaper-preview.jpg"
             alt="image"
             fill
+            sizes="(max-width: 768px) 100vw,
+            (max-width: 1200px) 50vw,
+            33vw"
           />
         </div>
       </Slider>

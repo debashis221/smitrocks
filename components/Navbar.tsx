@@ -1,7 +1,7 @@
 export default function NavBar() {
   return (
     <div>
-      <div className="navbar bg-base-300 px-14" data-theme="light">
+      <div className="navbar bg-base-300 lg:px-14" data-theme="light">
         <div className="navbar-start">
           <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
         </div>
@@ -10,7 +10,7 @@ export default function NavBar() {
           <button className="btn">Get started</button>
         </div>
       </div>
-      <div className="navbar bg-base-100 px-14">
+      <div className="navbar bg-base-100 lg:px-14">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">

@@ -45,7 +45,7 @@ export default function NavBar() {
         </div>
       </div>
       <div className="navbar bg-base-200 lg:px-14 py-5">
-        <div className="navbar-start">
+        <div className="navbar-start px-1">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
               <svg

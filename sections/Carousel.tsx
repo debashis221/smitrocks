@@ -1,28 +1,48 @@
 "use client";
-import BearCarousel, {
-  TBearSlideItemDataList,
-  BearSlideItem,
-} from "bear-react-carousel";
 
-const Slider = () => {
-  const images = [
-    { id: 1, image: "https://dummyimage.com/900x400/dee2e6/6c757d.jpg" },
-    { id: 2, image: "https://dummyimage.com/900x400/dee2e6/6c757d.jpg" },
-    { id: 3, image: "https://dummyimage.com/900x400/dee2e6/6c757d.jpg" },
-  ];
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Image from "next/image";
 
-  const bearSlideItemData: TBearSlideItemDataList = images.map((row) => {
-    return {
-      key: row.id,
-      children: <BearSlideItem imageUrl={row.image} />,
-    };
-  });
+const Carousel = () => {
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
   return (
-    <BearCarousel
-      data={bearSlideItemData}
-      aspectRatio={{ widthRatio: 16, heightRatio: 9 }}
-    />
+    <div>
+      <Slider {...settings}>
+        <div>
+          <Image
+            src="https://c4.wallpaperflare.com/wallpaper/808/87/756/son-goku-dragon-ball-ultra-instinct-dragon-ball-super-white-hair-hd-wallpaper-preview.jpg"
+            alt="image"
+            width={500}
+            height={500}
+          />
+        </div>
+        <div>
+          <Image
+            src="https://c4.wallpaperflare.com/wallpaper/808/87/756/son-goku-dragon-ball-ultra-instinct-dragon-ball-super-white-hair-hd-wallpaper-preview.jpg"
+            alt="image"
+            width={500}
+            height={500}
+          />
+        </div>
+        <div>
+          <Image
+            src="https://c4.wallpaperflare.com/wallpaper/808/87/756/son-goku-dragon-ball-ultra-instinct-dragon-ball-super-white-hair-hd-wallpaper-preview.jpg"
+            alt="image"
+            width={500}
+            height={500}
+          />
+        </div>
+      </Slider>
+    </div>
   );
 };
 
-export default Slider;
+export default Carousel;

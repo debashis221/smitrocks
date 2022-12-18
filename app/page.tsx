@@ -1,8 +1,8 @@
-import { Slider } from "../sections";
+import { Carousel } from "../sections";
 export default function Page() {
   return (
     <div>
-      <Slider />
+      <Carousel />
     </div>
   );
 }

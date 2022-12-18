@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { FaFacebook, FaLinkedinIn, FaInstagram, FaPhone } from "react-icons/fa";
 import { FiMail } from "react-icons/fi";
 
@@ -110,7 +111,7 @@ export default function NavBar() {
             </ul>
           </div>
           <a>
-            <img src="/logo.png" alt="logo" width={`200`} height="100" />
+            <Image src="/logo.png" alt="logo" width={`200`} height="100" />
           </a>
         </div>
         <div className="navbar-center hidden lg:flex">

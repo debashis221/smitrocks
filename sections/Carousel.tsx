@@ -23,7 +23,7 @@ const Carousel = () => {
             src="https://c4.wallpaperflare.com/wallpaper/808/87/756/son-goku-dragon-ball-ultra-instinct-dragon-ball-super-white-hair-hd-wallpaper-preview.jpg"
             alt="image"
             width={1200}
-            height={300}
+            height={100}
           />
         </div>
         <div>
@@ -31,7 +31,7 @@ const Carousel = () => {
             src="https://c4.wallpaperflare.com/wallpaper/808/87/756/son-goku-dragon-ball-ultra-instinct-dragon-ball-super-white-hair-hd-wallpaper-preview.jpg"
             alt="image"
             width={1200}
-            height={300}
+            height={100}
           />
         </div>
         <div>
@@ -39,7 +39,7 @@ const Carousel = () => {
             src="https://c4.wallpaperflare.com/wallpaper/808/87/756/son-goku-dragon-ball-ultra-instinct-dragon-ball-super-white-hair-hd-wallpaper-preview.jpg"
             alt="image"
             width={1200}
-            height={300}
+            height={100}
           />
         </div>
       </Slider>

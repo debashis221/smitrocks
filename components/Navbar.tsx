@@ -25,7 +25,7 @@ export default function NavBar() {
                     <input
                       type="text"
                       placeholder="info@site.com"
-                      className="input input-bordered input-md w-full max-w-xs"
+                      className="input input-bordered input-sm w-full max-w-xs"
                       required
                     />
                   </label>
@@ -36,9 +36,9 @@ export default function NavBar() {
                       <FaLock />
                     </span>
                     <input
-                      type="text"
+                      type="password"
                       placeholder="*********"
-                      className="input input-bordered"
+                      className="input input-bordered input-sm w-full max-w-xs"
                       required
                     />
                   </label>

@@ -16,7 +16,7 @@ export default function NavBar() {
         <div className="modal-box">
           <div className="flex flex-col w-full border-opacity-50">
             <div className="grid card bg-base-200 rounded-box place-items-center py-5">
-              <form className="">
+              <form className="px-5">
                 <div className="form-control py-3">
                   <label className="input-group">
                     <span>

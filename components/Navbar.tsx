@@ -15,34 +15,38 @@ export default function NavBar() {
       <div className="modal modal-bottom sm:modal-middle">
         <div className="modal-box">
           <div className="flex flex-col w-full border-opacity-50">
-            <div className="grid card bg-base-200 rounded-box place-items-center px-5 py-3">
-              <div className="py-3 px-5">
-                <label className="input-group">
-                  <span>
-                    <FiMail />
-                  </span>
-                  <input
-                    type="text"
-                    placeholder="info@site.com"
-                    className="input input-bordered"
-                  />
-                </label>
-              </div>
-              <div className="px-5">
-                <label className="input-group">
-                  <span>
-                    <FaLock />
-                  </span>
-                  <input
-                    type="text"
-                    placeholder="*********"
-                    className="input input-bordered"
-                  />
-                </label>
-              </div>
-              <div className="py-3 px-5">
-                <button className="btn btn-success">Login</button>
-              </div>
+            <div className="grid card bg-base-200 rounded-box place-items-center lg:py-3 lg:px-5">
+              <form className="place-items-center">
+                <div className="form-control py-3 px-5">
+                  <label className="input-group">
+                    <span>
+                      <FiMail />
+                    </span>
+                    <input
+                      type="text"
+                      placeholder="info@site.com"
+                      className="input input-bordered"
+                      required
+                    />
+                  </label>
+                </div>
+                <div className="form-control px-5">
+                  <label className="input-group">
+                    <span>
+                      <FaLock />
+                    </span>
+                    <input
+                      type="text"
+                      placeholder="*********"
+                      className="input input-bordered"
+                      required
+                    />
+                  </label>
+                </div>
+                <div className="form-control py-3 px-5">
+                  <button className="btn btn-success">Login</button>
+                </div>
+              </form>
             </div>
             <div className="divider">OR</div>
             <div className="grid h-20 card bg-base-300 rounded-box place-items-center">

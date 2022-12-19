@@ -17,7 +17,7 @@ export default function NavBar() {
           <div className="flex flex-col w-full border-opacity-50">
             <div className="grid card bg-base-200 rounded-box place-items-center lg:py-3 lg:px-5">
               <form className="place-items-center">
-                <div className="py-3 px-5">
+                <div className="form-control py-3 px-5">
                   <label className="input-group">
                     <span>
                       <FiMail />
@@ -30,7 +30,7 @@ export default function NavBar() {
                     />
                   </label>
                 </div>
-                <div className="px-5">
+                <div className="form-control px-5">
                   <label className="input-group">
                     <span>
                       <FaLock />
@@ -43,7 +43,7 @@ export default function NavBar() {
                     />
                   </label>
                 </div>
-                <div className="py-3 px-5">
+                <div className="form-control py-3 px-5">
                   <button className="btn btn-success">Login</button>
                 </div>
               </form>

@@ -171,7 +171,12 @@ export default function NavBar() {
             </ul>
           </div>
           <a>
-            <img src="/logo.png" alt="logo" width={`100%`} height="100" />
+            <img
+              src="https://smitgp.edu.in/uploads/cms/setting/1625928713-smit_logo.png"
+              alt="logo"
+              width={`100%`}
+              height="100"
+            />
           </a>
         </div>
         <div className="navbar-center hidden lg:flex">

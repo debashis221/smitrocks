@@ -17,7 +17,7 @@ export default function NavBar() {
           <div className="flex flex-col w-full border-opacity-50">
             <div className="grid card bg-base-200 rounded-box place-items-center lg:py-3 lg:px-5">
               <form className="place-items-center">
-                <div className="py-3 px-5">
+                <div className="lg:py-3 lg:px-5">
                   <label className="input-group">
                     <span>
                       <FiMail />
@@ -25,7 +25,7 @@ export default function NavBar() {
                     <input
                       type="text"
                       placeholder="info@site.com"
-                      className="input input-bordered w-50"
+                      className="input input-bordered input-md w-full max-w-xs"
                       required
                     />
                   </label>

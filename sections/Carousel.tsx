@@ -1,48 +1,30 @@
 "use client";
 
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import OwlCarousel from "react-owl-carousel2";
+import "react-owl-carousel2/style.css"; //Allows for server-side rendering.
 import Image from "next/image";
 
 const Carousel = () => {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: true,
+  const options = {
+    items: 1,
+    nav: true,
+    rewind: true,
     autoplay: true,
   };
+
   return (
     <div>
-      <Slider {...settings}>
+      <OwlCarousel options={options}>
         <div>
-          <Image
-            src="https://c4.wallpaperflare.com/wallpaper/808/87/756/son-goku-dragon-ball-ultra-instinct-dragon-ball-super-white-hair-hd-wallpaper-preview.jpg"
-            alt="image"
-            width={1200}
-            height={100}
-          />
+          <img src="/img/fullimage1.jpg" alt="The Last of us" />
         </div>
         <div>
-          <Image
-            src="https://c4.wallpaperflare.com/wallpaper/808/87/756/son-goku-dragon-ball-ultra-instinct-dragon-ball-super-white-hair-hd-wallpaper-preview.jpg"
-            alt="image"
-            width={1200}
-            height={100}
-          />
+          <img src="/img/fullimage2.jpg" alt="GTA V" />
         </div>
         <div>
-          <Image
-            src="https://c4.wallpaperflare.com/wallpaper/808/87/756/son-goku-dragon-ball-ultra-instinct-dragon-ball-super-white-hair-hd-wallpaper-preview.jpg"
-            alt="image"
-            width={1200}
-            height={100}
-          />
+          <img src="/img/fullimage3.jpg" alt="Mirror Edge" />
         </div>
-      </Slider>
+      </OwlCarousel>
     </div>
   );
 };

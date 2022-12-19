@@ -1,54 +1,21 @@
 "use client";
 
-import OwlCarousel from "react-owl-carousel";
-import "owl.carousel/dist/assets/owl.carousel.css";
-import "owl.carousel/dist/assets/owl.theme.default.css";
+import Carousel from "nuka-carousel/lib/carousel";
 import Image from "next/image";
 
-const Carousel = () => {
+const CarouselSlider = () => {
   return (
     <div>
-      <OwlCarousel className="owl-theme" loop margin={10} nav>
-        <div className="item">
-          <h4>1</h4>
-        </div>
-        <div className="item">
-          <h4>2</h4>
-        </div>
-        <div className="item">
-          <h4>3</h4>
-        </div>
-        <div className="item">
-          <h4>4</h4>
-        </div>
-        <div className="item">
-          <h4>5</h4>
-        </div>
-        <div className="item">
-          <h4>6</h4>
-        </div>
-        <div className="item">
-          <h4>7</h4>
-        </div>
-        <div className="item">
-          <h4>8</h4>
-        </div>
-        <div className="item">
-          <h4>9</h4>
-        </div>
-        <div className="item">
-          <h4>10</h4>
-        </div>
-        <div className="item">
-          <h4>11</h4>
-        </div>
-        <div className="item">
-          <h4>12</h4>
-        </div>
-      </OwlCarousel>
+      <Carousel wrapAround={true} slidesToShow={3}>
+        <img src="/image1.png" />
+        <img src="/image2.png" />
+        <img src="/image3.png" />
+        <img src="/image4.png" />
+        <img src="/image5.png" />
+      </Carousel>
       ;
     </div>
   );
 };
 
-export default Carousel;
+export default CarouselSlider;

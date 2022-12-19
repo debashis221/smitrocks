@@ -1,9 +1,9 @@
-import { CarouselSlider, Hero } from "../sections";
+import { Hero, NoticeBoard } from "../sections";
 export default function Page() {
   return (
     <div>
-      {/* <CarouselSlider /> */}
       <Hero />
+      <NoticeBoard />
     </div>
   );
 }

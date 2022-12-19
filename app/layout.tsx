@@ -12,7 +12,7 @@ export default function RootLayout({
     <html lang="en" data-theme="dark">
       <head />
       <body className={poppins.className}>
-        <div className="relative h-screen overflow-hidden">
+        <div className="relative h-screen overflow-x-hidden">
           <NavBar />
           {children}
         </div>

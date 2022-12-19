@@ -1,10 +1,70 @@
-import Image from "next/image";
-import { FaFacebook, FaLinkedinIn, FaInstagram, FaPhone } from "react-icons/fa";
+import {
+  FaFacebook,
+  FaLinkedinIn,
+  FaInstagram,
+  FaPhone,
+  FaLock,
+  FaGoogle,
+} from "react-icons/fa";
 import { FiMail } from "react-icons/fi";
 
 export default function NavBar() {
   return (
     <div>
+      <input type="checkbox" id="my-modal-6" className="modal-toggle" />
+      <div className="modal modal-bottom sm:modal-middle">
+        <div className="modal-box">
+          <div className="flex flex-col w-full border-opacity-50">
+            <div className="grid card bg-base-200 rounded-box place-items-center py-5">
+              <form className="">
+                <div className="form-control py-3">
+                  <label className="input-group">
+                    <span>
+                      <FiMail />
+                    </span>
+                    <input
+                      type="text"
+                      placeholder="info@site.com"
+                      className="input input-bordered"
+                    />
+                  </label>
+                </div>
+                <div className="form-control">
+                  <label className="input-group">
+                    <span>
+                      <FaLock />
+                    </span>
+                    <input
+                      type="text"
+                      placeholder="*********"
+                      className="input input-bordered"
+                    />
+                  </label>
+                </div>
+                <div className="form-control py-3">
+                  <button className="btn btn-success">Login</button>
+                </div>
+              </form>
+            </div>
+            <div className="divider">OR</div>
+            <div className="grid h-20 card bg-base-300 rounded-box place-items-center">
+              <div className="flex items-center gap-3">
+                <button className="btn btn-primary">
+                  <FaGoogle />
+                </button>
+                <button className="btn btn-secondary">
+                  <FaFacebook />
+                </button>
+              </div>
+            </div>
+            <div className="modal-action">
+              <label htmlFor="my-modal-6" className="btn btn-error">
+                Close
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
       <div className="navbar bg-base-300 lg:px-14">
         <div className="navbar-start">
           <a className="btn btn-ghost normal-case text-xl">
@@ -111,7 +171,7 @@ export default function NavBar() {
             </ul>
           </div>
           <a>
-            <Image src="/logo.png" alt="logo" width={`200`} height="100" />
+            <img src="/logo.png" alt="logo" width={`100%`} height="100" />
           </a>
         </div>
         <div className="navbar-center hidden lg:flex">
@@ -156,7 +216,9 @@ export default function NavBar() {
           </ul>
         </div>
         <div className="navbar-end">
-          <button className="btn">Contact Us</button>
+          <label className="btn" htmlFor="my-modal-6">
+            Login Now
+          </label>
         </div>
       </div>
     </div>

@@ -1,30 +1,52 @@
 "use client";
 
-import OwlCarousel from "react-owl-carousel2";
-import "react-owl-carousel2/style.css"; //Allows for server-side rendering.
+import OwlCarousel from "react-owl-carousel";
+import "owl.carousel/dist/assets/owl.carousel.css";
+import "owl.carousel/dist/assets/owl.theme.default.css";
 import Image from "next/image";
 
 const Carousel = () => {
-  const options = {
-    items: 1,
-    nav: true,
-    rewind: true,
-    autoplay: true,
-  };
-
   return (
     <div>
-      <OwlCarousel options={options}>
-        <div>
-          <img src="/img/fullimage1.jpg" alt="The Last of us" />
+      <OwlCarousel className="owl-theme" loop margin={10} nav>
+        <div className="item">
+          <h4>1</h4>
         </div>
-        <div>
-          <img src="/img/fullimage2.jpg" alt="GTA V" />
+        <div className="item">
+          <h4>2</h4>
         </div>
-        <div>
-          <img src="/img/fullimage3.jpg" alt="Mirror Edge" />
+        <div className="item">
+          <h4>3</h4>
+        </div>
+        <div className="item">
+          <h4>4</h4>
+        </div>
+        <div className="item">
+          <h4>5</h4>
+        </div>
+        <div className="item">
+          <h4>6</h4>
+        </div>
+        <div className="item">
+          <h4>7</h4>
+        </div>
+        <div className="item">
+          <h4>8</h4>
+        </div>
+        <div className="item">
+          <h4>9</h4>
+        </div>
+        <div className="item">
+          <h4>10</h4>
+        </div>
+        <div className="item">
+          <h4>11</h4>
+        </div>
+        <div className="item">
+          <h4>12</h4>
         </div>
       </OwlCarousel>
+      ;
     </div>
   );
 };

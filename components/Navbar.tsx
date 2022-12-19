@@ -25,7 +25,7 @@ export default function NavBar() {
                     <input
                       type="text"
                       placeholder="info@site.com"
-                      className="input input-bordered w-auto"
+                      className="input input-bordered w-50"
                       required
                     />
                   </label>

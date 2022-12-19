@@ -6,14 +6,11 @@ import Image from "next/image";
 const CarouselSlider = () => {
   return (
     <div>
-      <Carousel wrapAround={true} slidesToShow={3}>
-        <img src="/image1.png" />
-        <img src="/image2.png" />
-        <img src="/image3.png" />
-        <img src="/image4.png" />
-        <img src="/image5.png" />
+      <Carousel wrapAround={true} slidesToShow={1} autoplay={true}>
+        <img src="https://c4.wallpaperflare.com/wallpaper/808/87/756/son-goku-dragon-ball-ultra-instinct-dragon-ball-super-white-hair-hd-wallpaper-preview.jpg" />
+        <img src="https://c4.wallpaperflare.com/wallpaper/808/87/756/son-goku-dragon-ball-ultra-instinct-dragon-ball-super-white-hair-hd-wallpaper-preview.jpg" />
+        <img src="https://c4.wallpaperflare.com/wallpaper/808/87/756/son-goku-dragon-ball-ultra-instinct-dragon-ball-super-white-hair-hd-wallpaper-preview.jpg" />
       </Carousel>
-      ;
     </div>
   );
 };

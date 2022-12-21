@@ -1,28 +1,28 @@
+import Image from "next/image";
 import Link from "next/link";
 
-const Hero = () => {
+const NoticeItem = ({ propsData }: any) => {
   return (
-    <div>
-      <section className="pt-24">
-        <div className="px-12 mx-auto max-w-7xl">
-          <div className="w-full mx-auto text-left md:w-11/12 xl:w-9/12 md:text-center">
-            <h1 className="mb-8 text-4xl font-extrabold leading-none tracking-normal text-white md:text-6xl md:tracking-tight">
-              <span>Start</span>{" "}
-              <span className="block w-full py-2 text-transparent bg-clip-text leading-12 bg-gradient-to-r from-green-400 to-purple-500 lg:inline">
-                your bright future
-              </span>{" "}
-              <span>with our expert teachers.</span>
-            </h1>
-            <p className="px-0 mb-8 text-lg text-gray-200 md:text-xl lg:px-24">
-              Our mission is to provide best possible cources for the next
-              generation students.
-            </p>
-            <div className="mb-4 space-x-0 md:space-x-2 md:mb-8">
+    <div className="items-center justify-center text-center px-5 rounded-full">
+      <div className="card w-50 bg-base-100 shadow-xl image-full ">
+        <figure>
+          <Image
+            src="https://placeimg.com/400/225/arch"
+            alt="Shoes"
+            fill
+            className="rounded-2xl"
+          />
+        </figure>
+        <div className="card-body">
+          <h2 className="card-title">Shoes!</h2>
+          <p>If a dog chews shoes whose shoes does he choose?</p>
+          <div className="card-actions justify-end">
+            {propsData % 2 === 0 ? (
               <Link
                 href="#_"
                 className="inline-flex items-center justify-center w-full px-6 py-3 mb-2 text-lg text-white bg-gradient-to-r from-green-400 to-purple-500 rounded-2xl sm:w-auto sm:mb-0"
               >
-                Get Started
+                Check Now
                 <svg
                   className="w-4 h-4 ml-1"
                   xmlns="http://www.w3.org/2000/svg"
@@ -36,11 +36,12 @@ const Hero = () => {
                   ></path>
                 </svg>
               </Link>
+            ) : (
               <Link
                 href="#_"
                 className="inline-flex items-center justify-center w-full px-6 py-3 mb-2 text-lg bg-gray-100 rounded-2xl sm:w-auto sm:mb-0"
               >
-                Learn More
+                Check Now
                 <svg
                   className="w-4 h-4 ml-1"
                   fill="none"
@@ -56,12 +57,12 @@ const Hero = () => {
                   ></path>
                 </svg>
               </Link>
-            </div>
+            )}
           </div>
         </div>
-      </section>
+      </div>
     </div>
   );
 };
 
-export default Hero;
+export default NoticeItem;

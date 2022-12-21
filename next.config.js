@@ -15,6 +15,7 @@ const nextConfig = {
       "www.technoindiagroup.com",
       "c4.wallpaperflare.com",
       "placeimg.com",
+      "smitgp.edu.in",
     ],
   },
 };

@@ -1,3 +1,5 @@
+"use client";
+import Image from "next/image";
 import {
   FaFacebook,
   FaLinkedinIn,
@@ -173,10 +175,10 @@ export default function NavBar() {
             </ul>
           </div>
           <a>
-            <img
+            <Image
               src="https://smitgp.edu.in/uploads/cms/setting/1625928713-smit_logo.png"
               alt="logo"
-              width={`100%`}
+              width="100"
               height="100"
             />
           </a>

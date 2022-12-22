@@ -1,3 +1,5 @@
 import NavBar from "./Navbar";
 import NoticeItem from "./NoticeItem";
-export { NavBar, NoticeItem };
+import CourseItem from "./CourseItem";
+import GalleryItem from "./GalleryItem";
+export { NavBar, NoticeItem, CourseItem, GalleryItem };

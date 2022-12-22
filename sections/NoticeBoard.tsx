@@ -42,7 +42,7 @@ const NoticeBoard = () => {
     <div className="w-full py-10">
       <div className="flex text-center items-center justify-center flex-col">
         <h1 className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-3xl lg:text-3xl">
-          <span className="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r to-purple-500 from-green-400">
             Notice
           </span>
           Board

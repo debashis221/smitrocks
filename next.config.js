@@ -16,6 +16,8 @@ const nextConfig = {
       "c4.wallpaperflare.com",
       "placeimg.com",
       "smitgp.edu.in",
+      "mdbcdn.b-cdn.net",
+      "picsum.photos",
     ],
   },
 };

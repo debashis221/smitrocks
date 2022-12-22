@@ -103,7 +103,7 @@ export default function NavBar() {
           <a>debashissaha221@gmail.com</a>
         </div>
         <div className="navbar-end lg:hidden">
-          <button className="btn gap-2 lg:hidden justify-end">
+          <button className="btn btn-primary gap-2 lg:hidden justify-end">
             <FaPhone />
             Call Now
           </button>
@@ -225,7 +225,10 @@ export default function NavBar() {
           </ul>
         </div>
         <div className="navbar-end">
-          <label className="btn" htmlFor="my-modal-6">
+          <label
+            className="inline-flex items-center justify-center w-full px-6 py-3 mb-2 text-lg text-white bg-gradient-to-r from-green-400 to-purple-500 rounded-2xl sm:w-auto sm:mb-"
+            htmlFor="my-modal-6"
+          >
             Login Now
           </label>
         </div>

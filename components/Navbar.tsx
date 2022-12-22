@@ -12,7 +12,7 @@ import { FiMail } from "react-icons/fi";
 
 export default function NavBar() {
   return (
-    <div>
+    <div className="sticky top-0 z-30">
       <input type="checkbox" id="my-modal-6" className="modal-toggle" />
       <div className="modal modal-bottom sm:modal-middle">
         <div className="modal-box">
@@ -109,7 +109,7 @@ export default function NavBar() {
           </button>
         </div>
       </div>
-      <div className="navbar bg-base-200 lg:px-14 py-5">
+      <div className="navbar bg-base-200 lg:px-14 py-2">
         <div className="navbar-start px-1">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">

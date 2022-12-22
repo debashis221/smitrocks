@@ -18,6 +18,7 @@ const nextConfig = {
       "smitgp.edu.in",
       "mdbcdn.b-cdn.net",
       "picsum.photos",
+      "source.unsplash.com",
     ],
   },
 };

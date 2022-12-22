@@ -38,7 +38,7 @@ const Hero = () => {
               </Link>
               <Link
                 href="#_"
-                className="inline-flex items-center justify-center w-full px-6 py-3 mb-2 text-lg bg-gray-100 rounded-2xl sm:w-auto sm:mb-0"
+                className="inline-flex items-center justify-center w-full px-6 py-3 mb-2 text-lg bg-gray-300 rounded-2xl sm:w-auto sm:mb-0 text-black"
               >
                 Learn More
                 <svg

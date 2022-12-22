@@ -1,4 +1,11 @@
-import { CourcesOffered, Gallery, Hero, NoticeBoard } from "../sections";
+import {
+  CourcesOffered,
+  Gallery,
+  Hero,
+  Newsletter,
+  NoticeBoard,
+  Testimonials,
+} from "../sections";
 export default function Page() {
   return (
     <div>
@@ -6,6 +13,8 @@ export default function Page() {
       <NoticeBoard />
       <CourcesOffered />
       <Gallery />
+      <Testimonials />
+      <Newsletter />
     </div>
   );
 }

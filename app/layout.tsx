@@ -9,7 +9,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" data-theme="dark">
+    <html lang="en" data-theme="synthwave">
       <head />
       <body className={poppins.className}>
         <div className="relative h-screen overflow-x-hidden">

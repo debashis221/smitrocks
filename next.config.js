@@ -19,6 +19,7 @@ const nextConfig = {
       "mdbcdn.b-cdn.net",
       "picsum.photos",
       "source.unsplash.com",
+      "lh3.googleusercontent.com",
     ],
   },
 };

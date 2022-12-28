@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import { signIn, useSession } from "next-auth/react";
 import {
   FaFacebook,
   FaLinkedinIn,
@@ -11,6 +12,14 @@ import {
 import { FiMail } from "react-icons/fi";
 
 export default function NavBar() {
+  const handleGoogleSignIn = async (): Promise<void> => {
+    try {
+      await signIn("google", { callbackUrl: "http://localhost:3000" });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const { data: session } = useSession();
   return (
     <div className="sticky top-0 z-30">
       <input type="checkbox" id="my-modal-6" className="modal-toggle" />
@@ -46,14 +55,19 @@ export default function NavBar() {
                   </label>
                 </div>
                 <div className="form-control py-3 px-5">
-                  <button className="btn btn-success">Login</button>
+                  <button className="btn btn-success" onClick={() => signIn()}>
+                    Login
+                  </button>
                 </div>
               </form>
             </div>
             <div className="divider">OR</div>
             <div className="grid h-20 card bg-base-300 rounded-box place-items-center">
               <div className="flex items-center gap-3">
-                <button className="btn btn-primary">
+                <button
+                  className="btn btn-primary"
+                  onClick={() => handleGoogleSignIn()}
+                >
                   <FaGoogle />
                 </button>
                 <button className="btn btn-secondary">
@@ -225,12 +239,40 @@ export default function NavBar() {
           </ul>
         </div>
         <div className="navbar-end">
-          <label
-            className="inline-flex items-center justify-center w-full px-6 py-3 mb-2 text-lg text-white bg-gradient-to-r from-green-400 to-purple-500 rounded-2xl sm:w-auto sm:mb-"
-            htmlFor="my-modal-6"
-          >
-            Login Now
-          </label>
+          {session ? (
+            <div className="dropdown dropdown-end">
+              <label tabIndex={0}>
+                <div className="avatar cursor-pointer">
+                  <div className="w-12 rounded-full ring ring-success ring-offset-base-100 ring-offset-2">
+                    <Image
+                      src={session ? session.user.image : ""}
+                      alt="avatar"
+                      width={100}
+                      height={100}
+                    />
+                  </div>
+                </div>
+              </label>
+              <ul
+                tabIndex={0}
+                className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
+              >
+                <li>
+                  <a>Item 1</a>
+                </li>
+                <li>
+                  <a>Item 2</a>
+                </li>
+              </ul>
+            </div>
+          ) : (
+            <label
+              className="inline-flex items-center justify-center w-full px-6 py-3 mb-2 text-lg text-white bg-gradient-to-r from-green-400 to-purple-500 rounded-2xl cursor-pointer sm:w-auto"
+              htmlFor="my-modal-6"
+            >
+              Login Now
+            </label>
+          )}
         </div>
       </div>
     </div>

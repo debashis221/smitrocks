@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
-import { signIn, useSession } from "next-auth/react";
+import { useState } from "react";
+import { signIn, signOut, useSession } from "next-auth/react";
 import {
   FaFacebook,
   FaLinkedinIn,
@@ -8,10 +9,13 @@ import {
   FaPhone,
   FaLock,
   FaGoogle,
+  FaUser,
 } from "react-icons/fa";
 import { FiMail } from "react-icons/fi";
 
 export default function NavBar() {
+  const [loginActive, setLoginActive] = useState(true);
+  const [registerActive, setRegisterActive] = useState(false);
   const handleGoogleSignIn = async (): Promise<void> => {
     try {
       await signIn("google", { callbackUrl: "http://localhost:3000" });
@@ -25,41 +29,129 @@ export default function NavBar() {
       <input type="checkbox" id="my-modal-6" className="modal-toggle" />
       <div className="modal modal-bottom sm:modal-middle">
         <div className="modal-box">
+          <div className="tabs tabs-boxed mb-2 justify-center items-center p-3">
+            <a
+              className={loginActive ? "tab tab-active" : "tab"}
+              onClick={() => {
+                setLoginActive(!loginActive);
+                setRegisterActive(!registerActive);
+              }}
+            >
+              Login
+            </a>
+            <a
+              className={registerActive ? "tab tab-active" : "tab"}
+              onClick={() => {
+                setLoginActive(!loginActive);
+                setRegisterActive(!registerActive);
+              }}
+            >
+              Register
+            </a>
+          </div>
           <div className="flex flex-col w-full border-opacity-50">
             <div className="grid card bg-base-200 rounded-box place-items-center lg:py-3 lg:px-5">
-              <form className="place-items-center">
-                <div className="form-control py-3 px-5">
-                  <label className="input-group">
-                    <span>
-                      <FiMail />
-                    </span>
-                    <input
-                      type="text"
-                      placeholder="info@site.com"
-                      className="input input-bordered w-full max-w-xs"
-                      required
-                    />
-                  </label>
-                </div>
-                <div className="form-control px-5">
-                  <label className="input-group">
-                    <span>
-                      <FaLock />
-                    </span>
-                    <input
-                      type="password"
-                      placeholder="*********"
-                      className="input input-bordered w-full max-w-xs"
-                      required
-                    />
-                  </label>
-                </div>
-                <div className="form-control py-3 px-5">
-                  <button className="btn btn-success" onClick={() => signIn()}>
-                    Login
-                  </button>
-                </div>
-              </form>
+              {loginActive ? (
+                <form className="place-items-center">
+                  <div className="form-control py-3 px-5">
+                    <label className="input-group">
+                      <span>
+                        <FiMail />
+                      </span>
+                      <input
+                        type="text"
+                        placeholder="info@site.com"
+                        className="input input-bordered w-full max-w-xs"
+                        required
+                      />
+                    </label>
+                  </div>
+                  <div className="form-control px-5">
+                    <label className="input-group">
+                      <span>
+                        <FaLock />
+                      </span>
+                      <input
+                        type="password"
+                        placeholder="*********"
+                        className="input input-bordered w-full max-w-xs"
+                        required
+                      />
+                    </label>
+                  </div>
+                  <div className="form-control py-3 px-5">
+                    <button
+                      className="btn btn-success"
+                      onClick={() => signIn()}
+                    >
+                      Login
+                    </button>
+                  </div>
+                </form>
+              ) : (
+                <form className="place-items-center">
+                  <div className="form-control px-5">
+                    <label className="input-group">
+                      <span>
+                        <FaUser />
+                      </span>
+                      <input
+                        type="text"
+                        placeholder="Debashis Saha"
+                        className="input input-bordered w-full max-w-xs"
+                        required
+                      />
+                    </label>
+                  </div>
+                  <div className="form-control py-3 px-5">
+                    <label className="input-group">
+                      <span>
+                        <FiMail />
+                      </span>
+                      <input
+                        type="email"
+                        placeholder="info@site.com"
+                        className="input input-bordered w-full max-w-xs"
+                        required
+                      />
+                    </label>
+                  </div>
+                  <div className="form-control px-5">
+                    <label className="input-group">
+                      <span>
+                        <FaLock />
+                      </span>
+                      <input
+                        type="password"
+                        placeholder="Password"
+                        className="input input-bordered w-full max-w-xs"
+                        required
+                      />
+                    </label>
+                  </div>
+                  <div className="form-control py-3 px-5">
+                    <label className="input-group">
+                      <span>
+                        <FaLock />
+                      </span>
+                      <input
+                        type="password"
+                        placeholder="Confirm Password"
+                        className="input input-bordered w-full max-w-xs"
+                        required
+                      />
+                    </label>
+                  </div>
+                  <div className="form-control py-3 px-5">
+                    <button
+                      className="btn btn-success"
+                      onClick={() => signIn()}
+                    >
+                      Register
+                    </button>
+                  </div>
+                </form>
+              )}
             </div>
             <div className="divider">OR</div>
             <div className="grid h-20 card bg-base-300 rounded-box place-items-center">
@@ -68,10 +160,10 @@ export default function NavBar() {
                   className="btn btn-primary"
                   onClick={() => handleGoogleSignIn()}
                 >
-                  <FaGoogle />
+                  <FaGoogle size={20} color="white" />
                 </button>
                 <button className="btn btn-secondary">
-                  <FaFacebook />
+                  <FaFacebook size={20} color="white" />
                 </button>
               </div>
             </div>
@@ -258,10 +350,10 @@ export default function NavBar() {
                 className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
               >
                 <li>
-                  <a>Item 1</a>
+                  <a>Profile</a>
                 </li>
-                <li>
-                  <a>Item 2</a>
+                <li onClick={() => signOut()}>
+                  <a>Logout</a>
                 </li>
               </ul>
             </div>

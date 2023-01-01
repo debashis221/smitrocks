@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
-import { signIn, signOut, useSession } from "next-auth/react";
+import { signIn, SignInResponse, signOut, useSession } from "next-auth/react";
 import {
   FaFacebook,
   FaLinkedinIn,
@@ -26,21 +26,17 @@ export default function NavBar() {
     email: string;
     password: string;
   }
-  interface response {
-    error: string;
-    status: number;
-    ok: boolean;
-    url: string;
-  }
+
   const LoginSubmit = async (values: User) => {
-    const response: response = await signIn("credentials", {
+    const response: SignInResponse = await signIn("credentials", {
       redirect: false,
       email: values.email,
       password: values.password,
       callbackUrl: "/",
     });
+    console.log(response);
     if (response.ok) {
-      router.push(response?.url);
+      router.push(response.url);
     }
   };
   const onRegisterSubmit = async (values: Object) => {

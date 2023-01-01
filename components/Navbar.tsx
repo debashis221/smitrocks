@@ -11,11 +11,42 @@ import {
   FaGoogle,
   FaUser,
 } from "react-icons/fa";
+import { Formik, Form, Field, ErrorMessage, FormikProps } from "formik";
 import { FiMail } from "react-icons/fi";
+import login_validate, {
+  register_validate,
+} from "../lib/validation/validations";
+import { useRouter } from "next/navigation";
 
 export default function NavBar() {
   const [loginActive, setLoginActive] = useState(true);
   const [registerActive, setRegisterActive] = useState(false);
+  const router = useRouter();
+  interface User {
+    email: string;
+    password: string;
+  }
+  interface response {
+    error: string;
+    status: number;
+    ok: boolean;
+    url: string;
+  }
+  const LoginSubmit = async (values: User) => {
+    const response: response = await signIn("credentials", {
+      redirect: false,
+      email: values.email,
+      password: values.password,
+      callbackUrl: "/",
+    });
+    if (response.ok) {
+      router.push(response?.url);
+    }
+  };
+  const onRegisterSubmit = async (values: Object) => {
+    console.log(values);
+  };
+
   const handleGoogleSignIn = async (): Promise<void> => {
     try {
       await signIn("google", { callbackUrl: "http://localhost:3000" });
@@ -52,105 +83,170 @@ export default function NavBar() {
           <div className="flex flex-col w-full border-opacity-50">
             <div className="grid card bg-base-200 rounded-box place-items-center lg:py-3 lg:px-5">
               {loginActive ? (
-                <form className="place-items-center">
-                  <div className="form-control py-3 px-5">
-                    <label className="input-group">
-                      <span>
-                        <FiMail />
-                      </span>
-                      <input
-                        type="text"
-                        placeholder="info@site.com"
-                        className="input input-bordered w-full max-w-xs"
-                        required
-                      />
-                    </label>
-                  </div>
-                  <div className="form-control px-5">
-                    <label className="input-group">
-                      <span>
-                        <FaLock />
-                      </span>
-                      <input
-                        type="password"
-                        placeholder="*********"
-                        className="input input-bordered w-full max-w-xs"
-                        required
-                      />
-                    </label>
-                  </div>
-                  <div className="form-control py-3 px-5">
-                    <button
-                      className="btn btn-success"
-                      onClick={() => signIn()}
-                    >
-                      Login
-                    </button>
-                  </div>
-                </form>
+                <Formik
+                  className="place-items-center"
+                  initialValues={{
+                    email: "",
+                    password: "",
+                  }}
+                  validate={login_validate}
+                  onSubmit={LoginSubmit}
+                >
+                  {({ errors, touched }: FormikProps<any>) => (
+                    <Form>
+                      <div className="form-control py-3 px-5">
+                        <label className="input-group">
+                          <span>
+                            <FiMail />
+                          </span>
+                          <Field
+                            type="email"
+                            placeholder="info@site.com"
+                            className="input input-bordered w-full max-w-xs"
+                            name="email"
+                            required
+                          />
+                        </label>
+                        <ErrorMessage name="email">
+                          {(msg) => (
+                            <span className="text-center text-rose-500">
+                              {msg}
+                            </span>
+                          )}
+                        </ErrorMessage>
+                      </div>
+                      <div className="form-control px-5">
+                        <label className="input-group">
+                          <span>
+                            <FaLock />
+                          </span>
+                          <Field
+                            type="password"
+                            placeholder="*********"
+                            className="input input-bordered w-full max-w-xs"
+                            name="password"
+                            required
+                          />
+                        </label>
+                        <ErrorMessage name="password">
+                          {(msg) => (
+                            <span className="text-center text-rose-500">
+                              {msg}
+                            </span>
+                          )}
+                        </ErrorMessage>
+                      </div>
+                      <div className="form-control py-3 px-5">
+                        <button className="btn btn-success" type="submit">
+                          Login
+                        </button>
+                      </div>
+                    </Form>
+                  )}
+                </Formik>
               ) : (
-                <form className="place-items-center">
-                  <div className="form-control px-5">
-                    <label className="input-group">
-                      <span>
-                        <FaUser />
-                      </span>
-                      <input
-                        type="text"
-                        placeholder="Debashis Saha"
-                        className="input input-bordered w-full max-w-xs"
-                        required
-                      />
-                    </label>
-                  </div>
-                  <div className="form-control py-3 px-5">
-                    <label className="input-group">
-                      <span>
-                        <FiMail />
-                      </span>
-                      <input
-                        type="email"
-                        placeholder="info@site.com"
-                        className="input input-bordered w-full max-w-xs"
-                        required
-                      />
-                    </label>
-                  </div>
-                  <div className="form-control px-5">
-                    <label className="input-group">
-                      <span>
-                        <FaLock />
-                      </span>
-                      <input
-                        type="password"
-                        placeholder="Password"
-                        className="input input-bordered w-full max-w-xs"
-                        required
-                      />
-                    </label>
-                  </div>
-                  <div className="form-control py-3 px-5">
-                    <label className="input-group">
-                      <span>
-                        <FaLock />
-                      </span>
-                      <input
-                        type="password"
-                        placeholder="Confirm Password"
-                        className="input input-bordered w-full max-w-xs"
-                        required
-                      />
-                    </label>
-                  </div>
-                  <div className="form-control py-3 px-5">
-                    <button
-                      className="btn btn-success"
-                      onClick={() => signIn()}
-                    >
-                      Register
-                    </button>
-                  </div>
-                </form>
+                <Formik
+                  initialValues={{
+                    userName: "",
+                    email: "",
+                    password: "",
+                    confirmPassword: "",
+                  }}
+                  validate={register_validate}
+                  onSubmit={onRegisterSubmit}
+                >
+                  <Form className="place-items-center">
+                    <div className="form-control px-5">
+                      <label className="input-group">
+                        <span>
+                          <FaUser />
+                        </span>
+                        <Field
+                          type="text"
+                          placeholder="Debashis Saha"
+                          className="input input-bordered w-full max-w-xs"
+                          name="name"
+                          required
+                        />
+                      </label>
+                      <ErrorMessage name="name">
+                        {(msg) => (
+                          <span className="text-center text-rose-500">
+                            {msg}
+                          </span>
+                        )}
+                      </ErrorMessage>
+                    </div>
+                    <div className="form-control py-3 px-5">
+                      <label className="input-group">
+                        <span>
+                          <FiMail />
+                        </span>
+                        <Field
+                          type="email"
+                          placeholder="info@site.com"
+                          className="input input-bordered w-full max-w-xs"
+                          name="email"
+                          required
+                        />
+                      </label>
+                      <ErrorMessage name="email">
+                        {(msg) => (
+                          <span className="text-center text-rose-500">
+                            {msg}
+                          </span>
+                        )}
+                      </ErrorMessage>
+                    </div>
+                    <div className="form-control px-5">
+                      <label className="input-group">
+                        <span>
+                          <FaLock />
+                        </span>
+                        <Field
+                          type="password"
+                          placeholder="Password"
+                          className="input input-bordered w-full max-w-xs"
+                          name="password"
+                          required
+                        />
+                      </label>
+                      <ErrorMessage name="password">
+                        {(msg) => (
+                          <span className="text-center text-rose-500">
+                            {msg}
+                          </span>
+                        )}
+                      </ErrorMessage>
+                    </div>
+                    <div className="form-control py-3 px-5">
+                      <label className="input-group">
+                        <span>
+                          <FaLock />
+                        </span>
+                        <Field
+                          type="password"
+                          placeholder="Confirm Password"
+                          className="input input-bordered w-full max-w-xs"
+                          name="confirmPassword"
+                          required
+                        />
+                      </label>
+                      <ErrorMessage name="confirmPassword">
+                        {(msg) => (
+                          <span className="text-center text-rose-500">
+                            {msg}
+                          </span>
+                        )}
+                      </ErrorMessage>
+                    </div>
+                    <div className="form-control py-3 px-5">
+                      <button className="btn btn-success" type="submit">
+                        Register
+                      </button>
+                    </div>
+                  </Form>
+                </Formik>
               )}
             </div>
             <div className="divider">OR</div>

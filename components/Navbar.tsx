@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { signIn, SignInResponse, signOut, useSession } from "next-auth/react";
 import { createUser } from "../axios/services/users.service";
+import toast from "react-hot-toast";
 import {
   FaFacebook,
   FaLinkedinIn,
@@ -22,6 +23,7 @@ import { useRouter } from "next/navigation";
 export default function NavBar() {
   const [loginActive, setLoginActive] = useState(true);
   const [registerActive, setRegisterActive] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
   type User = {
@@ -32,12 +34,17 @@ export default function NavBar() {
   };
 
   const LoginSubmit = async (values: User) => {};
-  const onRegisterSubmit = async (values: Object) => {
+  const onRegisterSubmit = async (values: User) => {
+    setIsLoading(true);
     try {
       const data = await createUser(values);
-      console.log(data);
+      if (data.status === 200) {
+        setIsLoading(false);
+        toast.success(data.data.msg);
+      }
     } catch (error) {
       console.log(error);
+      setIsLoading(false);
     }
   };
 
@@ -49,7 +56,6 @@ export default function NavBar() {
     }
   };
   const { data: session } = useSession();
-  console.log(session);
   return (
     <div className="sticky top-0 z-30">
       <input type="checkbox" id="my-modal-6" className="modal-toggle" />
@@ -132,9 +138,15 @@ export default function NavBar() {
                         </ErrorMessage>
                       </div>
                       <div className="form-control py-3 px-5">
-                        <button className="btn btn-success" type="submit">
-                          Login
-                        </button>
+                        {isLoading ? (
+                          <button className="btn btn-success loading">
+                            Loading
+                          </button>
+                        ) : (
+                          <button className="btn btn-success" type="submit">
+                            Login
+                          </button>
+                        )}
                       </div>
                     </Form>
                   )}

@@ -4,6 +4,7 @@ import "./globals.css";
 import { Poppins } from "@next/font/google";
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "700"] });
 import { SessionProvider } from "next-auth/react";
+import { Toaster } from "react-hot-toast";
 
 export default function RootLayout({
   children,
@@ -17,6 +18,7 @@ export default function RootLayout({
         <SessionProvider refetchOnWindowFocus={false}>
           <div className="relative h-screen overflow-x-hidden">
             <NavBar />
+            <Toaster />
             {children}
             <Footer />
           </div>

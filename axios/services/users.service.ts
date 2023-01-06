@@ -6,12 +6,20 @@ export type User = {
   email: string;
   password: string;
 };
+type resgisterResponse = {
+  config: Object;
+  data: Object;
+  headers: Object;
+  request: Object;
+  status: number;
+  statusText: string;
+};
 
 export const fetchUsers = async (): Promise<User[]> => {
   return await http.get<User[]>("/users");
 };
 
-export const createUser = async (user: User): Promise<User> => {
+export const createUser = async (user: User): Promise<resgisterResponse> => {
   return await http.post<User>("/users", user);
 };
 

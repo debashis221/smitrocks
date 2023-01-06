@@ -50,7 +50,7 @@ const addUser = async (req: NextApiRequest, res: NextApiResponse) => {
         password: await hash(password, 12),
       },
     });
-    return res.status(200).json({ user, msg: "User added succesfully" });
+    return res.status(200).json({ user, msg: "Account has been created?" });
   } catch (err) {
     console.error(err);
     return res.status(500).json({ msg: err });

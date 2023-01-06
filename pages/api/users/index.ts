@@ -1,30 +1,16 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import prisma from "../../../lib/prisma";
 import { hash } from "bcryptjs";
+import { UserClass } from "../../../axios/services/users.service";
 
-interface User {
-  name: string;
-  email: string;
-  password: string;
-}
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   if (req.method === "POST") {
-    try {
-      return await addUser(req, res);
-    } catch (err) {
-      console.error(err);
-      return res.status(500).json({ msg: err });
-    }
+    return await addUser(req, res);
   } else if (req.method === "GET") {
-    try {
-      return await getUsers(req, res);
-    } catch (err) {
-      console.error(err);
-      return res.status(500).json({ msg: "Something went wrong" });
-    }
+    return await getUsers(req, res);
   } else {
     return res.status(405).json({ msg: "Method not allowed" });
   }
@@ -35,7 +21,6 @@ const getUsers = async (req: NextApiRequest, res: NextApiResponse) => {
     const data = await prisma.user.findMany({});
     return res.status(200).json({ data, success: "Successfully get the data" });
   } catch (err) {
-    console.error(err);
     return res.status(500).json({ msg: "Something went wrong" });
   }
 };
@@ -43,16 +28,17 @@ const getUsers = async (req: NextApiRequest, res: NextApiResponse) => {
 const addUser = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const { name, email, password } = req.body;
-    const user = await prisma.user.create({
-      data: <User>{
+    const createUser = await prisma.user.create({
+      data: <UserClass>{
         name,
         email,
         password: await hash(password, 12),
       },
     });
-    return res.status(200).json({ user, msg: "Account has been created?" });
+    return res
+      .status(200)
+      .json({ data: createUser, msg: "Account has been created!" });
   } catch (err) {
-    console.error(err);
-    return res.status(500).json({ msg: err });
+    return res.status(500).json({ msg: "User Already Exists" });
   }
 };

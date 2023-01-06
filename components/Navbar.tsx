@@ -34,9 +34,11 @@ export default function NavBar() {
       if (data.status === 200) {
         setIsLoading(false);
         toast.success(data.data.msg);
+      } else {
+        toast.error(data.data.msg);
       }
     } catch (error) {
-      console.log(error);
+      toast.error(error.data.msg);
       setIsLoading(false);
     }
   };
@@ -241,9 +243,15 @@ export default function NavBar() {
                       </ErrorMessage>
                     </div>
                     <div className="form-control py-3 px-5">
-                      <button className="btn btn-success" type="submit">
-                        Register
-                      </button>
+                      {isLoading ? (
+                        <button className="btn btn-success loading" disabled>
+                          Loading
+                        </button>
+                      ) : (
+                        <button className="btn btn-success" type="submit">
+                          Register
+                        </button>
+                      )}
                     </div>
                   </Form>
                 </Formik>

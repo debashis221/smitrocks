@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { signIn, SignInResponse, signOut, useSession } from "next-auth/react";
-
+import { createUser } from "../axios/services/users.service";
 import {
   FaFacebook,
   FaLinkedinIn,
@@ -24,19 +24,18 @@ export default function NavBar() {
   const [registerActive, setRegisterActive] = useState(false);
   const router = useRouter();
 
-  interface User {
+  type User = {
+    id: string;
+    name: string;
     email: string;
     password: string;
-  }
+  };
 
   const LoginSubmit = async (values: User) => {};
   const onRegisterSubmit = async (values: Object) => {
     try {
-      const response = await fetch("/api/user", {
-        method: "POST",
-        body: JSON.stringify(values),
-      });
-      console.log(await response.json());
+      const data = await createUser(values);
+      console.log(data);
     } catch (error) {
       console.log(error);
     }
@@ -430,7 +429,7 @@ export default function NavBar() {
                   <div className="w-12 rounded-full ring ring-success ring-offset-base-100 ring-offset-2">
                     {session ? (
                       <Image
-                        src={session.user}
+                        src={session.user.image}
                         alt="avatar"
                         width={100}
                         height={100}

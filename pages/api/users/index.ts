@@ -42,7 +42,7 @@ const getUsers = async (req: NextApiRequest, res: NextApiResponse) => {
 
 const addUser = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
-    const { name, email, password } = JSON.parse(req.body);
+    const { name, email, password } = req.body;
     const user = await prisma.user.create({
       data: <User>{
         name,

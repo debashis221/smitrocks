@@ -40,7 +40,7 @@ class Http {
 
   initHttp() {
     const http = axios.create({
-      baseURL: "https://api.example.com",
+      baseURL: "/api",
       headers,
       withCredentials: true,
     });

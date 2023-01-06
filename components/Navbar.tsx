@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { signIn, SignInResponse, signOut, useSession } from "next-auth/react";
+
 import {
   FaFacebook,
   FaLinkedinIn,
@@ -22,35 +23,34 @@ export default function NavBar() {
   const [loginActive, setLoginActive] = useState(true);
   const [registerActive, setRegisterActive] = useState(false);
   const router = useRouter();
+
   interface User {
     email: string;
     password: string;
   }
 
-  const LoginSubmit = async (values: User) => {
-    const response: SignInResponse = await signIn("credentials", {
-      redirect: false,
-      email: values.email,
-      password: values.password,
-      callbackUrl: "/",
-    });
-    console.log(response);
-    if (response.ok) {
-      router.push(response.url);
-    }
-  };
+  const LoginSubmit = async (values: User) => {};
   const onRegisterSubmit = async (values: Object) => {
-    console.log(values);
+    try {
+      const response = await fetch("/api/user", {
+        method: "POST",
+        body: JSON.stringify(values),
+      });
+      console.log(await response.json());
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleGoogleSignIn = async (): Promise<void> => {
     try {
-      await signIn("google", { callbackUrl: "http://localhost:3000" });
+      await signIn("google", { callbackUrl: "/" });
     } catch (error) {
       console.log(error);
     }
   };
   const { data: session } = useSession();
+  console.log(session);
   return (
     <div className="sticky top-0 z-30">
       <input type="checkbox" id="my-modal-6" className="modal-toggle" />
@@ -428,12 +428,16 @@ export default function NavBar() {
               <label tabIndex={0}>
                 <div className="avatar cursor-pointer">
                   <div className="w-12 rounded-full ring ring-success ring-offset-base-100 ring-offset-2">
-                    <Image
-                      src={session ? session.user.image : ""}
-                      alt="avatar"
-                      width={100}
-                      height={100}
-                    />
+                    {session ? (
+                      <Image
+                        src={session.user}
+                        alt="avatar"
+                        width={100}
+                        height={100}
+                      />
+                    ) : (
+                      <></>
+                    )}
                   </div>
                 </div>
               </label>

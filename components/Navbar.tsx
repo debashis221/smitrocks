@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { signIn, SignInResponse, signOut, useSession } from "next-auth/react";
-import { createUser } from "../axios/services/users.service";
+import { createUser, UserClass } from "../axios/services/users.service";
 import toast from "react-hot-toast";
 import {
   FaFacebook,
@@ -26,15 +26,8 @@ export default function NavBar() {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
-  type User = {
-    id: string;
-    name: string;
-    email: string;
-    password: string;
-  };
-
-  const LoginSubmit = async (values: User) => {};
-  const onRegisterSubmit = async (values: User) => {
+  const LoginSubmit = async (values: UserClass) => {};
+  const onRegisterSubmit = async (values: UserClass) => {
     setIsLoading(true);
     try {
       const data = await createUser(values);

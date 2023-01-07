@@ -62,6 +62,7 @@ export default function NavBar() {
     }
   };
   const { data: session } = useSession();
+  console.log(session);
   return (
     <div className="sticky top-0 z-30">
       <input type="checkbox" id="my-modal-6" className="modal-toggle" />

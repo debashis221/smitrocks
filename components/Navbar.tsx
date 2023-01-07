@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
-import { signIn, SignInResponse, signOut, useSession } from "next-auth/react";
+import { signIn, signOut, useSession } from "next-auth/react";
 import { createUser, UserClass } from "../axios/services/users.service";
 import toast from "react-hot-toast";
 import {
@@ -13,12 +13,13 @@ import {
   FaGoogle,
   FaUser,
 } from "react-icons/fa";
-import { Formik, Form, Field, ErrorMessage, FormikProps } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import { FiMail } from "react-icons/fi";
 import login_validate, {
   register_validate,
 } from "../lib/validation/validations";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function NavBar() {
   const [loginActive, setLoginActive] = useState(true);
@@ -26,7 +27,17 @@ export default function NavBar() {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
-  const LoginSubmit = async (values: UserClass) => {};
+  const LoginSubmit = async (values: UserClass) => {
+    const status = await signIn("credentials", {
+      redirect: false,
+      email: values.email,
+      password: values.password,
+      callbackUrl: "/",
+    });
+    if (status!.ok) {
+      router.push(status!.url!);
+    }
+  };
   const onRegisterSubmit = async (values: UserClass) => {
     setIsLoading(true);
     try {
@@ -37,7 +48,7 @@ export default function NavBar() {
       } else {
         toast.error(data.data.msg);
       }
-    } catch (error) {
+    } catch (error: any) {
       toast.error(error.data.msg);
       setIsLoading(false);
     }
@@ -57,24 +68,26 @@ export default function NavBar() {
       <div className="modal modal-bottom sm:modal-middle">
         <div className="modal-box">
           <div className="tabs tabs-boxed mb-2 justify-center items-center p-3">
-            <a
+            <Link
               className={loginActive ? "tab tab-active" : "tab"}
               onClick={() => {
                 setLoginActive(!loginActive);
                 setRegisterActive(!registerActive);
               }}
+              href="#"
             >
               Login
-            </a>
-            <a
+            </Link>
+            <Link
               className={registerActive ? "tab tab-active" : "tab"}
+              href="#"
               onClick={() => {
                 setLoginActive(!loginActive);
                 setRegisterActive(!registerActive);
               }}
             >
               Register
-            </a>
+            </Link>
           </div>
           <div className="flex flex-col w-full border-opacity-50">
             <div className="grid card bg-base-200 rounded-box place-items-center lg:py-3 lg:px-5">
@@ -88,63 +101,61 @@ export default function NavBar() {
                   validate={login_validate}
                   onSubmit={LoginSubmit}
                 >
-                  {({ errors, touched }: FormikProps<any>) => (
-                    <Form>
-                      <div className="form-control py-3 px-5">
-                        <label className="input-group">
-                          <span>
-                            <FiMail />
+                  <Form>
+                    <div className="form-control py-3 px-5">
+                      <label className="input-group">
+                        <span>
+                          <FiMail />
+                        </span>
+                        <Field
+                          type="email"
+                          placeholder="info@site.com"
+                          className="input input-bordered w-full max-w-xs"
+                          name="email"
+                          required
+                        />
+                      </label>
+                      <ErrorMessage name="email">
+                        {(msg) => (
+                          <span className="text-center text-rose-500">
+                            {msg}
                           </span>
-                          <Field
-                            type="email"
-                            placeholder="info@site.com"
-                            className="input input-bordered w-full max-w-xs"
-                            name="email"
-                            required
-                          />
-                        </label>
-                        <ErrorMessage name="email">
-                          {(msg) => (
-                            <span className="text-center text-rose-500">
-                              {msg}
-                            </span>
-                          )}
-                        </ErrorMessage>
-                      </div>
-                      <div className="form-control px-5">
-                        <label className="input-group">
-                          <span>
-                            <FaLock />
-                          </span>
-                          <Field
-                            type="password"
-                            placeholder="*********"
-                            className="input input-bordered w-full max-w-xs"
-                            name="password"
-                            required
-                          />
-                        </label>
-                        <ErrorMessage name="password">
-                          {(msg) => (
-                            <span className="text-center text-rose-500">
-                              {msg}
-                            </span>
-                          )}
-                        </ErrorMessage>
-                      </div>
-                      <div className="form-control py-3 px-5">
-                        {isLoading ? (
-                          <button className="btn btn-success loading">
-                            Loading
-                          </button>
-                        ) : (
-                          <button className="btn btn-success" type="submit">
-                            Login
-                          </button>
                         )}
-                      </div>
-                    </Form>
-                  )}
+                      </ErrorMessage>
+                    </div>
+                    <div className="form-control px-5">
+                      <label className="input-group">
+                        <span>
+                          <FaLock />
+                        </span>
+                        <Field
+                          type="password"
+                          placeholder="*********"
+                          className="input input-bordered w-full max-w-xs"
+                          name="password"
+                          required
+                        />
+                      </label>
+                      <ErrorMessage name="password">
+                        {(msg) => (
+                          <span className="text-center text-rose-500">
+                            {msg}
+                          </span>
+                        )}
+                      </ErrorMessage>
+                    </div>
+                    <div className="form-control py-3 px-5">
+                      {isLoading ? (
+                        <button className="btn btn-success loading">
+                          Loading
+                        </button>
+                      ) : (
+                        <button className="btn btn-success" type="submit">
+                          Login
+                        </button>
+                      )}
+                    </div>
+                  </Form>
                 </Formik>
               ) : (
                 <Formik
@@ -442,7 +453,7 @@ export default function NavBar() {
                   <div className="w-12 rounded-full ring ring-success ring-offset-base-100 ring-offset-2">
                     {session ? (
                       <Image
-                        src={session.user.image}
+                        src={session.user!.image!}
                         alt="avatar"
                         width={100}
                         height={100}

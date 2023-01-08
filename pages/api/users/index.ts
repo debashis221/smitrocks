@@ -33,7 +33,11 @@ const getSingleUser = async (req: NextApiRequest, res: NextApiResponse) => {
     const { email } = req.query;
     console.log(email);
     const data = await prisma.user.findUnique({ where: { email: email } });
-    return res.status(200).json({ data, success: "Successfully get the data" });
+    if (data) {
+      return res
+        .status(200)
+        .json({ data, success: "Successfully get the single user data" });
+    }
   } catch (err) {
     return res.status(500).json({ msg: "Something went wrong" });
   }

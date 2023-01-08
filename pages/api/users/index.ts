@@ -22,8 +22,12 @@ export default async function handler(
 
 const getUsers = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
-    const data = await prisma.user.findMany({});
-    return res.status(200).json({ data, success: "Successfully get the data" });
+    const user = await prisma.user.findMany({});
+    if (user) {
+      return res
+        .status(200)
+        .json({ user, success: "Successfully get the data" });
+    }
   } catch (err) {
     return res.status(500).json({ msg: "Something went wrong" });
   }
@@ -31,11 +35,11 @@ const getUsers = async (req: NextApiRequest, res: NextApiResponse) => {
 const getSingleUser = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const { email } = req.query;
-    const data = await prisma.user.findUnique({ where: { email } });
-    if (data) {
+    const user = await prisma.user.findUnique({ where: { email: email } });
+    if (user) {
       return res
         .status(200)
-        .json({ data, success: "Successfully get the single user data" });
+        .json({ user, success: "Successfully get the single user data" });
     }
   } catch (err) {
     return res.status(500).json({ msg: "Something went wrong" });
@@ -54,7 +58,7 @@ const addUser = async (req: NextApiRequest, res: NextApiResponse) => {
     });
     return res
       .status(200)
-      .json({ data: createUser, msg: "Account has been created!" });
+      .json({ user: createUser, msg: "Account has been created!" });
   } catch (err) {
     return res.status(500).json({ msg: "User Already Exists" });
   }

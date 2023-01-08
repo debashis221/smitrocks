@@ -209,14 +209,14 @@ export default function NavBar() {
                 tabIndex={0}
                 className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
               >
-                {userData!.data.data.isAdmin ? (
+                {userData!.data.user.isAdmin ? (
                   <li>
                     <a>Admin Panel</a>
                   </li>
                 ) : (
                   <></>
                 )}
-                {userData!.data.data.isTeacher ? (
+                {userData!.data.user.isTeacher ? (
                   <li>
                     <a>Faculty Panel</a>
                   </li>

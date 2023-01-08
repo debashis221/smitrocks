@@ -23,6 +23,7 @@ export default function NavBar() {
       setUserData([]);
     };
   }, [session]);
+  console.log(session);
   console.log(userData);
 
   return (

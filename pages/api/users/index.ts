@@ -10,7 +10,7 @@ export default async function handler(
   if (req.method === "POST") {
     return await addUser(req, res);
   } else if (req.method === "GET") {
-    const { email } = req.query;
+    const email = req.query;
     if (req.query && email) {
       return await getSingleUser(req, res);
     }
@@ -30,7 +30,7 @@ const getUsers = async (req: NextApiRequest, res: NextApiResponse) => {
 };
 const getSingleUser = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
-    const { email } = req.query;
+    const email = req.query;
     console.log(email);
     const data = await prisma.user.findUnique({ where: { email: email } });
     if (data) {

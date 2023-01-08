@@ -160,7 +160,7 @@ export default function NavBar() {
                   <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
                 </svg>
               </a>
-              <ul className="p-2">
+              <ul className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
                 <li>
                   <a>Submenu 1</a>
                 </li>

@@ -28,6 +28,7 @@ export default function NavBar() {
   const router = useRouter();
 
   const LoginSubmit = async (values: Object) => {
+    setIsLoading(true);
     const status = await signIn("credentials", {
       redirect: false,
       email: values.email,
@@ -35,9 +36,11 @@ export default function NavBar() {
       callbackUrl: "/",
     });
     if (status!.ok) {
+      setIsLoading(false);
       router.push(status!.url!);
     } else {
       toast.error(status!.error!);
+      setIsLoading(true);
     }
   };
   const onRegisterSubmit = async (values: UserClass) => {

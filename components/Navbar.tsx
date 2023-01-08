@@ -27,8 +27,7 @@ export default function NavBar() {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
-  const LoginSubmit = async (values: UserClass, e: Event) => {
-    e.preventDefault();
+  const LoginSubmit = async (values: Object) => {
     const status = await signIn("credentials", {
       redirect: false,
       email: values.email,

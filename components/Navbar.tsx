@@ -11,6 +11,7 @@ import { fetchSingleUser } from "../axios/services/users.service";
 export default function NavBar() {
   const { data: session } = useSession();
   const [userData, setUserData] = useState([]);
+
   async function getUserData() {
     if (session) {
       const user = await fetchSingleUser(session.user.email);
@@ -23,8 +24,6 @@ export default function NavBar() {
       setUserData([]);
     };
   }, [session]);
-  console.log(session);
-  console.log(userData);
 
   return (
     <div className="sticky top-0 z-30">
@@ -213,6 +212,16 @@ export default function NavBar() {
                 tabIndex={0}
                 className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
               >
+                {userData.length > 0 && userData.data.isAdmin && (
+                  <li>
+                    <a>Admin Panel</a>
+                  </li>
+                )}
+                {userData.length > 0 && userData.data.isTeacher && (
+                  <li>
+                    <a>Faculty Panel</a>
+                  </li>
+                )}
                 <li>
                   <a>Profile</a>
                 </li>

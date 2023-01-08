@@ -13,7 +13,7 @@ export default function NavBar() {
   const [userData, setUserData] = useState([]);
   async function getUserData() {
     if (session) {
-      const user = await fetchSingleUser(session.email);
+      const user = await fetchSingleUser(session.user.email);
       setUserData(user);
     }
   }

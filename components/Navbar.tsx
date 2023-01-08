@@ -3,6 +3,7 @@ import Image from "next/image";
 import { signOut, useSession, signIn } from "next-auth/react";
 import { FaFacebook, FaLinkedinIn, FaInstagram, FaPhone } from "react-icons/fa";
 import { FiMail } from "react-icons/fi";
+import Link from "next/link";
 
 export default function NavBar() {
   const { data: session } = useSession();
@@ -114,14 +115,14 @@ export default function NavBar() {
               </li>
             </ul>
           </div>
-          <a>
+          <Link href="/">
             <Image
               src="https://smitgp.edu.in/uploads/cms/setting/1625928713-smit_logo.png"
               alt="logo"
               width="100"
               height="100"
             />
-          </a>
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul tabIndex={0} className="menu menu-horizontal px-1">

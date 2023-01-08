@@ -13,7 +13,6 @@ export const authOptions: NextAuthOptions = {
       clientId: process.env.FACEBOOK_ID!,
       clientSecret: process.env.FACEBOOK_SECRET!,
     }),
-
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
@@ -39,6 +38,9 @@ export const authOptions: NextAuthOptions = {
   ],
   pages: {
     signIn: "/auth/login",
+  },
+  session: {
+    strategy: "jwt",
   },
   secret: process.env.NEXT_PUBLIC_SECRET,
 };

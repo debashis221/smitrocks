@@ -6,7 +6,7 @@ import { signOut, useSession, signIn } from "next-auth/react";
 import { FaFacebook, FaLinkedinIn, FaInstagram, FaPhone } from "react-icons/fa";
 import { FiMail } from "react-icons/fi";
 import Link from "next/link";
-import { fetchSingleUser } from "../axios/services/users.service";
+import { fetchSingleUser, UserClass } from "../axios/services/users.service";
 
 export default function NavBar() {
   const { data: session } = useSession();
@@ -15,7 +15,7 @@ export default function NavBar() {
   async function getUserData() {
     if (session) {
       const user = await fetchSingleUser(session.user.email);
-      setUserData(user);
+      setUserData(user.data.data);
     }
   }
   useEffect(() => {
@@ -213,12 +213,12 @@ export default function NavBar() {
                 tabIndex={0}
                 className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
               >
-                {userData.length > 0 && userData.data.isAdmin && (
+                {userData.length > 0 && userData.isAdmin && (
                   <li>
                     <a>Admin Panel</a>
                   </li>
                 )}
-                {userData.length > 0 && userData.data.isTeacher && (
+                {userData.length > 0 && userData.isTeacher && (
                   <li>
                     <a>Faculty Panel</a>
                   </li>

@@ -23,20 +23,20 @@ export interface UserClass {
 }
 
 export const fetchUsers = async (): Promise<User[]> => {
-  return await http.get<User[]>("/users");
+  return await http.get("/users");
 };
-export const fetchSingleUser = async (email: string): Promise<User[]> => {
-  return await http.get<User[]>(`/users?email=${email}`);
+export const fetchSingleUser = async (email: string): Promise<any> => {
+  return await http.get(`/users?email=${email}`);
 };
 
 export const createUser = async (user: UserClass): Promise<User> => {
-  return await http.post<UserClass>("/users", user);
+  return await http.post("/users", user);
 };
 
 export const updateUser = async (user: UserClass): Promise<User> => {
-  return await http.put<UserClass>(`/users/${user.id}`, user);
+  return await http.put(`/users/${user.id}`, user);
 };
 
 export const deleteUser = async (user: UserClass): Promise<User> => {
-  return await http.delete<UserClass>(`/users/${user.id}`);
+  return await http.delete(`/users/${user.id}`);
 };

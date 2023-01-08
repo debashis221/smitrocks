@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { signIn, signOut, useSession } from "next-auth/react";
-import { createUser, UserClass } from "../axios/services/users.service";
+import { createUser } from "../axios/services/users.service";
 import toast from "react-hot-toast";
 import {
   FaFacebook,
@@ -43,7 +43,7 @@ export default function NavBar() {
       toast.error(status!.error!);
     }
   };
-  const onRegisterSubmit = async (values: UserClass) => {
+  const onRegisterSubmit = async (values: Object) => {
     setIsLoading(true);
     try {
       const data = await createUser(values);
@@ -457,7 +457,7 @@ export default function NavBar() {
               <label tabIndex={0}>
                 <div className="avatar cursor-pointer">
                   <div className="w-12 rounded-full ring ring-success ring-offset-base-100 ring-offset-2">
-                    {session ? (
+                    {session.user!.image ? (
                       <Image
                         src={session.user!.image!}
                         alt="avatar"
@@ -465,7 +465,14 @@ export default function NavBar() {
                         height={100}
                       />
                     ) : (
-                      <></>
+                      <Image
+                        src={
+                          "https://c4.wallpaperflare.com/wallpaper/808/87/756/son-goku-dragon-ball-ultra-instinct-dragon-ball-super-white-hair-hd-wallpaper-preview.jpg"
+                        }
+                        alt="avatar"
+                        width={100}
+                        height={100}
+                      />
                     )}
                   </div>
                 </div>

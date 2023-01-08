@@ -39,8 +39,8 @@ export default function NavBar() {
       setIsLoading(false);
       router.push(status!.url!);
     } else {
+      setIsLoading(false);
       toast.error(status!.error!);
-      setIsLoading(true);
     }
   };
   const onRegisterSubmit = async (values: UserClass) => {
@@ -54,8 +54,8 @@ export default function NavBar() {
         toast.error(data.data.msg);
       }
     } catch (error: any) {
-      toast.error(error.data.msg);
       setIsLoading(false);
+      toast.error(error.data.msg);
     }
   };
 

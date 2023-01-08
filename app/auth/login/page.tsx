@@ -11,7 +11,6 @@ import login_validate, {
   register_validate,
 } from "../../../lib/validation/validations";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 
 const LoginPage = () => {
   const [loginActive, setLoginActive] = useState(true);

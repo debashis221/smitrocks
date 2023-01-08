@@ -7,7 +7,7 @@ export interface User {
 }
 
 export interface Data {
-  user: UserClass;
+  data: UserClass;
   msg: string;
 }
 
@@ -25,8 +25,9 @@ export interface UserClass {
 export const fetchUsers = async (): Promise<User[]> => {
   return await http.get("/users");
 };
-export const fetchSingleUser = async (email: string): Promise<any> => {
-  return await http.get(`/users?email=${email}`);
+export const fetchSingleUser = async (email: string): Promise<User> => {
+  const data = await http.get(`/users?email=${email}`);
+  return data;
 };
 
 export const createUser = async (user: UserClass): Promise<User> => {

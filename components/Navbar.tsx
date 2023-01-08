@@ -34,8 +34,9 @@ export default function NavBar() {
       password: values.password,
       callbackUrl: "/",
     });
-    if (status!.ok) {
-      router.push(status!.url!);
+    console.log(status);
+    if (status.ok) {
+      router.replace(status.url);
     }
   };
   const onRegisterSubmit = async (values: UserClass) => {

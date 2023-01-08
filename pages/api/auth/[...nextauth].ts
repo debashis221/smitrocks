@@ -4,6 +4,7 @@ import FacebookProvider from "next-auth/providers/facebook";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import prisma from "../../../lib/prisma";
+// import { compare } from "bcryptjs";
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
@@ -19,12 +20,15 @@ export const authOptions: NextAuthOptions = {
     }),
     CredentialsProvider({
       name: "Credentials",
+      credentials: {},
       async authorize(credentials, req) {
-        const user = await prisma.user.findUnique({
-          where: { email: credentials!.email },
-        });
-        if (!user) throw new Error("No user found");
-        return { user };
+        const { email, password } = credentials as any;
+        const user = await prisma.user.findFirst({ where: { email: email } });
+        if (user) {
+          throw new Error("No user found");
+        } else {
+          throw new Error("No user found");
+        }
       },
     }),
   ],

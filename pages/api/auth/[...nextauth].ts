@@ -4,7 +4,7 @@ import FacebookProvider from "next-auth/providers/facebook";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import prisma from "../../../lib/prisma";
-// import { compare } from "bcryptjs";
+import { compare } from "bcryptjs";
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
@@ -25,7 +25,12 @@ export const authOptions: NextAuthOptions = {
         const { email, password } = credentials as any;
         const user = await prisma.user.findFirst({ where: { email: email } });
         if (user) {
-          return user;
+          const isValid = await compare(password, user.password);
+          if (isValid) {
+            return user;
+          } else {
+            throw new Error("Invalid password");
+          }
         } else {
           throw new Error("No user found");
         }

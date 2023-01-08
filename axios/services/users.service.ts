@@ -25,6 +25,9 @@ export interface UserClass {
 export const fetchUsers = async (): Promise<User[]> => {
   return await http.get<User[]>("/users");
 };
+export const fetchSingleUser = async (email: string): Promise<User[]> => {
+  return await http.get<User[]>(`/users?email=${email}`);
+};
 
 export const createUser = async (user: UserClass): Promise<User> => {
   return await http.post<UserClass>("/users", user);

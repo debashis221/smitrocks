@@ -6,17 +6,15 @@ import { signOut, useSession, signIn } from "next-auth/react";
 import { FaFacebook, FaLinkedinIn, FaInstagram, FaPhone } from "react-icons/fa";
 import { FiMail } from "react-icons/fi";
 import Link from "next/link";
-import prisma from "lib/prisma";
+import { fetchSingleUser } from "axios/services/users.service";
 
 export default function NavBar() {
   const { data: session } = useSession();
   const [userData, setUserData] = useState([]);
   async function getUserData() {
     if (session) {
-      const user = await prisma.user.findUnique({
-        where: { email: session!.email },
-      });
-      setUserData(user!);
+      const user = await fetchSingleUser(session.email);
+      setUserData(user);
     }
   }
   useEffect(() => {

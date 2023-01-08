@@ -40,7 +40,7 @@ export const authOptions: NextAuthOptions = {
     signIn: "/auth/login",
   },
   session: {
-    strategy: "database",
+    strategy: "jwt",
   },
   secret: process.env.NEXT_PUBLIC_SECRET,
 };

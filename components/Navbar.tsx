@@ -1,13 +1,28 @@
 "use client";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { signOut, useSession, signIn } from "next-auth/react";
 import { FaFacebook, FaLinkedinIn, FaInstagram, FaPhone } from "react-icons/fa";
 import { FiMail } from "react-icons/fi";
 import Link from "next/link";
+import prisma from "lib/prisma";
 
 export default function NavBar() {
   const { data: session } = useSession();
-  console.log(session);
+  const [userData, setUserData] = useState(null);
+  async function getUserData() {
+    if (session) {
+      const user = await prisma.user.findUnique({
+        where: { email: session!.email },
+      });
+    }
+  }
+  useEffect(() => {
+    return () => {
+      setUserData(null);
+    };
+  }, [session]);
+
   return (
     <div className="sticky top-0 z-30">
       <div className="navbar bg-base-300 lg:px-14">

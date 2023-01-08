@@ -1,4 +1,5 @@
 "use client";
+
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { signOut, useSession, signIn } from "next-auth/react";
@@ -9,19 +10,22 @@ import prisma from "lib/prisma";
 
 export default function NavBar() {
   const { data: session } = useSession();
-  const [userData, setUserData] = useState(null);
+  const [userData, setUserData] = useState([]);
   async function getUserData() {
     if (session) {
       const user = await prisma.user.findUnique({
         where: { email: session!.email },
       });
+      setUserData(user!);
     }
   }
   useEffect(() => {
+    getUserData();
     return () => {
-      setUserData(null);
+      setUserData([]);
     };
   }, [session]);
+  console.log(userData);
 
   return (
     <div className="sticky top-0 z-30">

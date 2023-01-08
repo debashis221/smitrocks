@@ -24,6 +24,7 @@ export default function NavBar() {
       setUserData([]);
     };
   }, [session]);
+  console.log(userData);
 
   return (
     <div className="sticky top-0 z-30">

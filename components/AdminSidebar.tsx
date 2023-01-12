@@ -1,14 +1,20 @@
+"use client";
+
+import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
-import { unstable_getServerSession } from "next-auth/next";
-import { authOptions } from "pages/api/auth/[...nextauth]";
+import { useRouter } from "next/router";
 
-const AdminSidebar = async () => {
-  const session = await unstable_getServerSession(authOptions);
+const AdminSidebar = () => {
+  const { data: session, status } = useSession();
+  const router = useRouter();
   if (typeof window === "undefined") return null;
-  console.log(session);
   if (status === "loading") {
     return <p>Loading...</p>;
+  }
+
+  if (status === "unauthenticated") {
+    router.push("/");
   }
   return (
     <div className="overflow-y-hidden">

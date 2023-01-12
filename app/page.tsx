@@ -1,3 +1,4 @@
+import { GeneralLayot } from "wrappers";
 import {
   CourcesOffered,
   Gallery,
@@ -8,13 +9,13 @@ import {
 } from "../sections";
 export default function Page() {
   return (
-    <div>
+    <GeneralLayot>
       <Hero />
       <NoticeBoard />
       <CourcesOffered />
       <Gallery />
       <Testimonials />
       <Newsletter />
-    </div>
+    </GeneralLayot>
   );
 }

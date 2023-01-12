@@ -19,11 +19,12 @@ const LoginPage = () => {
   const router = useRouter();
 
   const LoginSubmit = async (values: Object) => {
+    const { email, password } = values;
     setIsLoading(true);
     const status = await signIn("credentials", {
       redirect: false,
-      email: values.email,
-      password: values.password,
+      email: email,
+      password: password,
       callbackUrl: "/",
     });
     if (status!.ok) {

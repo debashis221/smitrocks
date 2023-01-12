@@ -211,7 +211,7 @@ export default function NavBar() {
               >
                 {userData && userData!.data.user.isAdmin ? (
                   <li>
-                    <a>Admin Panel</a>
+                    <Link href="/admin">Admin Panel</Link>
                   </li>
                 ) : (
                   <></>

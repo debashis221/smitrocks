@@ -3,4 +3,13 @@ import NoticeItem from "./NoticeItem";
 import CourseItem from "./CourseItem";
 import TestimonialsItem from "./TestimonialsItem";
 import { Footer } from "./Footer";
-export { NavBar, NoticeItem, CourseItem, TestimonialsItem, Footer };
+import AdminSidebar from "./AdminSidebar";
+
+export {
+  NavBar,
+  NoticeItem,
+  CourseItem,
+  TestimonialsItem,
+  Footer,
+  AdminSidebar,
+};

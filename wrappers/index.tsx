@@ -1,3 +1,4 @@
 import GeneralLayot from "./GeneralLayout";
+import AdminLayout from "./AdminLayout";
 
-export { GeneralLayot };
+export { GeneralLayot, AdminLayout };

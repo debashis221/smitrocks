@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { signOut } from "next-auth/react";
 
 const AdminNavBar = ({ session }: any) => {
   return (
@@ -33,26 +34,41 @@ const AdminNavBar = ({ session }: any) => {
       </div>
       <div className="navbar-end">
         {session && (
-          <div className="avatar cursor-pointer">
-            <div className="w-12 rounded-full ring ring-success ring-offset-base-100 ring-offset-2">
-              {session.user!.image ? (
-                <Image
-                  src={session.user!.image!}
-                  alt="avatar"
-                  width={100}
-                  height={100}
-                />
-              ) : (
-                <Image
-                  src={
-                    "https://c4.wallpaperflare.com/wallpaper/808/87/756/son-goku-dragon-ball-ultra-instinct-dragon-ball-super-white-hair-hd-wallpaper-preview.jpg"
-                  }
-                  alt="avatar"
-                  width={100}
-                  height={100}
-                />
-              )}
-            </div>
+          <div className="dropdown dropdown-end">
+            <label tabIndex={0}>
+              <div className="avatar cursor-pointer">
+                <div className="w-12 rounded-full ring ring-success ring-offset-base-100 ring-offset-2">
+                  {session.user!.image ? (
+                    <Image
+                      src={session.user!.image!}
+                      alt="avatar"
+                      width={100}
+                      height={100}
+                    />
+                  ) : (
+                    <Image
+                      src={
+                        "https://c4.wallpaperflare.com/wallpaper/808/87/756/son-goku-dragon-ball-ultra-instinct-dragon-ball-super-white-hair-hd-wallpaper-preview.jpg"
+                      }
+                      alt="avatar"
+                      width={100}
+                      height={100}
+                    />
+                  )}
+                </div>
+              </div>
+            </label>
+            <ul
+              tabIndex={0}
+              className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
+            >
+              <li>
+                <a>Profile</a>
+              </li>
+              <li onClick={() => signOut()}>
+                <a>Logout</a>
+              </li>
+            </ul>
           </div>
         )}
       </div>

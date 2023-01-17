@@ -34,7 +34,7 @@ const AdminNavBar = ({ session }: any) => {
       </div>
       <div className="navbar-end">
         {session ? (
-          <div className="dropdown dropdown-end">
+          <div className="dropdown dropdown-end bg-white">
             <label tabIndex={0}>
               <div className="avatar cursor-pointer">
                 <div className="w-12 rounded-full ring ring-success ring-offset-base-100 ring-offset-2">

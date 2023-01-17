@@ -1,9 +1,9 @@
 import Image from "next/image";
-import Link from "next/link";
 
 const AdminNavBar = ({ session }: any) => {
   return (
     <div className="navbar bg-primary text-primary-content">
+      <div className="navbar-start"></div>
       <div className="navbar-center hidden lg:flex">
         <div className="form-control">
           <div className="input-group">

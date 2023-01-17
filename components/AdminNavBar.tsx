@@ -34,7 +34,7 @@ const AdminNavBar = ({ session }: any) => {
       </div>
       <div className="navbar-end">
         {session ? (
-          <div className="dropdown dropdown-end bg-white">
+          <div className="dropdown dropdown-end">
             <label tabIndex={0}>
               <div className="avatar cursor-pointer">
                 <div className="w-12 rounded-full ring ring-success ring-offset-base-100 ring-offset-2">
@@ -60,7 +60,7 @@ const AdminNavBar = ({ session }: any) => {
             </label>
             <ul
               tabIndex={0}
-              className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
+              className="dropdown-content menu p-2 shadow rounded-box w-52 bg-white"
             >
               <li>
                 <a>Profile</a>

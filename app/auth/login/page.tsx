@@ -95,48 +95,58 @@ const LoginPage = () => {
                   validate={login_validate}
                   onSubmit={LoginSubmit}
                 >
-                  <Form>
+                  <Form className="px-5 py-5">
                     <div className="form-control py-3 px-5">
-                      <label className="input-group">
-                        <span>
-                          <FiMail />
+                      <div className="indicator">
+                        <span className="indicator-item badge bg-primary">
+                          Required
                         </span>
-                        <Field
-                          type="email"
-                          placeholder="info@site.com"
-                          className="input input-bordered w-full max-w-xs"
-                          name="email"
-                          required
-                        />
-                      </label>
-                      <ErrorMessage name="email">
-                        {(msg) => (
-                          <span className="text-center text-rose-500">
-                            {msg}
+                        <label className="input-group">
+                          <span>
+                            <FiMail />
                           </span>
-                        )}
-                      </ErrorMessage>
+                          <Field
+                            type="email"
+                            placeholder="info@site.com"
+                            className="input input-bordered w-full max-w-xs"
+                            name="email"
+                            required
+                          />
+                        </label>
+                        <ErrorMessage name="email">
+                          {(msg) => (
+                            <span className="text-center text-rose-500">
+                              {msg}
+                            </span>
+                          )}
+                        </ErrorMessage>
+                      </div>
                     </div>
                     <div className="form-control px-5">
-                      <label className="input-group">
-                        <span>
-                          <FaLock />
+                      <div className="indicator">
+                        <span className="indicator-item badge bg-primary">
+                          Required
                         </span>
-                        <Field
-                          type="password"
-                          placeholder="*********"
-                          className="input input-bordered w-full max-w-xs"
-                          name="password"
-                          required
-                        />
-                      </label>
-                      <ErrorMessage name="password">
-                        {(msg) => (
-                          <span className="text-center text-rose-500">
-                            {msg}
+                        <label className="input-group">
+                          <span>
+                            <FaLock />
                           </span>
-                        )}
-                      </ErrorMessage>
+                          <Field
+                            type="password"
+                            placeholder="*********"
+                            className="input input-bordered w-full max-w-xs"
+                            name="password"
+                            required
+                          />
+                        </label>
+                        <ErrorMessage name="password">
+                          {(msg) => (
+                            <span className="text-center text-rose-500">
+                              {msg}
+                            </span>
+                          )}
+                        </ErrorMessage>
+                      </div>
                     </div>
                     <div className="form-control py-3 px-5">
                       {isLoading ? (
@@ -162,90 +172,110 @@ const LoginPage = () => {
                   validate={register_validate}
                   onSubmit={onRegisterSubmit}
                 >
-                  <Form className="place-items-center">
+                  <Form className="place-items-center px-5 py-5">
                     <div className="form-control px-5">
-                      <label className="input-group">
-                        <span>
-                          <FaUser />
+                      <div className="indicator">
+                        <span className="indicator-item badge bg-primary">
+                          Required
                         </span>
-                        <Field
-                          type="text"
-                          placeholder="Debashis Saha"
-                          className="input input-bordered w-full max-w-xs"
-                          name="name"
-                          required
-                        />
-                      </label>
-                      <ErrorMessage name="name">
-                        {(msg) => (
-                          <span className="text-center text-rose-500">
-                            {msg}
+                        <label className="input-group">
+                          <span>
+                            <FaUser />
                           </span>
-                        )}
-                      </ErrorMessage>
+                          <Field
+                            type="text"
+                            placeholder="Debashis Saha"
+                            className="input input-bordered w-full max-w-xs"
+                            name="name"
+                            required
+                          />
+                        </label>
+                        <ErrorMessage name="name">
+                          {(msg) => (
+                            <span className="text-center text-rose-500">
+                              {msg}
+                            </span>
+                          )}
+                        </ErrorMessage>
+                      </div>
                     </div>
                     <div className="form-control py-3 px-5">
-                      <label className="input-group">
-                        <span>
-                          <FiMail />
+                      <div className="indicator">
+                        <span className="indicator-item badge bg-primary">
+                          Required
                         </span>
-                        <Field
-                          type="email"
-                          placeholder="info@site.com"
-                          className="input input-bordered w-full max-w-xs"
-                          name="email"
-                          required
-                        />
-                      </label>
-                      <ErrorMessage name="email">
-                        {(msg) => (
-                          <span className="text-center text-rose-500">
-                            {msg}
+                        <label className="input-group">
+                          <span>
+                            <FiMail />
                           </span>
-                        )}
-                      </ErrorMessage>
+                          <Field
+                            type="email"
+                            placeholder="info@site.com"
+                            className="input input-bordered w-full max-w-xs"
+                            name="email"
+                            required
+                          />
+                        </label>
+                        <ErrorMessage name="email">
+                          {(msg) => (
+                            <span className="text-center text-rose-500">
+                              {msg}
+                            </span>
+                          )}
+                        </ErrorMessage>
+                      </div>
                     </div>
                     <div className="form-control px-5">
-                      <label className="input-group">
-                        <span>
-                          <FaLock />
+                      <div className="indicator">
+                        <span className="indicator-item badge bg-primary">
+                          Required
                         </span>
-                        <Field
-                          type="password"
-                          placeholder="Password"
-                          className="input input-bordered w-full max-w-xs"
-                          name="password"
-                          required
-                        />
-                      </label>
-                      <ErrorMessage name="password">
-                        {(msg) => (
-                          <span className="text-center text-rose-500">
-                            {msg}
+                        <label className="input-group">
+                          <span>
+                            <FaLock />
                           </span>
-                        )}
-                      </ErrorMessage>
+                          <Field
+                            type="password"
+                            placeholder="Password"
+                            className="input input-bordered w-full max-w-xs"
+                            name="password"
+                            required
+                          />
+                        </label>
+                        <ErrorMessage name="password">
+                          {(msg) => (
+                            <span className="text-center text-rose-500">
+                              {msg}
+                            </span>
+                          )}
+                        </ErrorMessage>
+                      </div>
                     </div>
                     <div className="form-control py-3 px-5">
-                      <label className="input-group">
-                        <span>
-                          <FaLock />
+                      <div className="indicator">
+                        <span className="indicator-item badge bg-primary">
+                          Required
                         </span>
-                        <Field
-                          type="password"
-                          placeholder="Confirm Password"
-                          className="input input-bordered w-full max-w-xs"
-                          name="confirmPassword"
-                          required
-                        />
-                      </label>
-                      <ErrorMessage name="confirmPassword">
-                        {(msg) => (
-                          <span className="text-center text-rose-500">
-                            {msg}
+                        <label className="input-group">
+                          <span>
+                            <FaLock />
                           </span>
-                        )}
-                      </ErrorMessage>
+                          <Field
+                            type="password"
+                            placeholder="Confirm Password"
+                            className="input input-bordered w-full max-w-xs"
+                            name="confirmPassword"
+                            required
+                          />
+                        </label>
+                        <ErrorMessage name="confirmPassword">
+                          {(msg) => (
+                            <span className="text-center text-rose-500">
+                              {msg}
+                            </span>
+                          )}
+                        </ErrorMessage>
+                      </div>
                     </div>
                     <div className="form-control py-3 px-5">
                       {isLoading ? (

@@ -1,6 +1,5 @@
 "use client";
 
-import { fetchSingleUser } from "../axios/services/users.service";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,13 +8,12 @@ import { useRouter } from "next/navigation";
 const AdminSidebar = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
-  const user = fetchSingleUser(session?.user?.email as string);
   if (typeof window === "undefined") return null;
   if (status === "loading") {
     return <p className="text-center">Loading...</p>;
   }
 
-  if (status === "unauthenticated" || !user.data.user.isAdmin) {
+  if (status === "unauthenticated") {
     router.push("/");
   } else {
     return (

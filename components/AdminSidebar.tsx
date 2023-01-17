@@ -47,7 +47,7 @@ const AdminSidebar = () => {
         className="absolute text-white text-4xl top-5 left-4 cursor-pointer"
         onClick={() => setOpen(!open)}
       >
-        <BsFilterLeft className="px-2 bg-[#13005A] rounded-md" />
+        <BsFilterLeft className="px-2 bg-[#13005A] rounded-md" size={25} />
       </span>
       <div
         className={`sidebar fixed top-0 bottom-0 lg:left-0 ${

@@ -13,7 +13,7 @@ const AdminSidebar = () => {
     return <p className="text-center">Loading...</p>;
   }
 
-  if (status === "unauthenticated" || !session?.user?.isAdmin) {
+  if (status === "unauthenticated") {
     router.push("/");
   } else {
     return (

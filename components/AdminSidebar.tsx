@@ -13,7 +13,7 @@ const AdminSidebar = () => {
     return <p className="text-center">Loading...</p>;
   }
 
-  if (status === "unauthenticated" || !session!.user!.isAdmin!) {
+  if (status === "unauthenticated" || !session?.user?.isAdmin) {
     router.push("/");
   } else {
     return (
@@ -139,6 +139,7 @@ const AdminSidebar = () => {
       </div>
     );
   }
+  return <></>;
 };
 
 export default AdminSidebar;

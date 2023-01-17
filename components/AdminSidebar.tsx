@@ -18,7 +18,7 @@ const AdminSidebar = () => {
     return (
       <div className="overflow-y-hidden">
         <AdminNavBar session={session} />
-        <ul className="menu bg-secondary w-56 p-2 h-screen">
+        <ul className="menu bg-ghost w-56 p-2 h-screen">
           <li>
             <a>
               <svg

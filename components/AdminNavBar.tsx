@@ -33,7 +33,7 @@ const AdminNavBar = ({ session }: any) => {
         </div>
       </div>
       <div className="navbar-end">
-        {session && (
+        {session ? (
           <div className="dropdown dropdown-end">
             <label tabIndex={0}>
               <div className="avatar cursor-pointer">
@@ -62,11 +62,18 @@ const AdminNavBar = ({ session }: any) => {
               tabIndex={0}
               className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
             >
+              <li>
+                <a>Profile</a>
+              </li>
               <li onClick={() => signOut()}>
-                <a className="text-white">Logout</a>
+                <a>Logout</a>
               </li>
             </ul>
           </div>
+        ) : (
+          <button className="inline-flex items-center justify-center w-full px-6 py-3 mb-2 text-lg text-white bg-gradient-to-r from-green-400 to-purple-500 rounded-2xl cursor-pointer sm:w-auto">
+            Login Now
+          </button>
         )}
       </div>
     </div>

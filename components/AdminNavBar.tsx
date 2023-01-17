@@ -4,11 +4,6 @@ import Link from "next/link";
 const AdminNavBar = ({ session }: any) => {
   return (
     <div className="navbar bg-primary text-primary-content">
-      <div className="navbar-start">
-        <Link className="btn btn-ghost normal-case text-xl" href="/">
-          SMIT ROCKS
-        </Link>
-      </div>
       <div className="navbar-center hidden lg:flex">
         <div className="form-control">
           <div className="input-group">

@@ -4,6 +4,7 @@ import CourseItem from "./CourseItem";
 import TestimonialsItem from "./TestimonialsItem";
 import { Footer } from "./Footer";
 import AdminSidebar from "./AdminSidebar";
+import AdminNavBar from "./AdminNavBar";
 
 export {
   NavBar,
@@ -12,4 +13,5 @@ export {
   TestimonialsItem,
   Footer,
   AdminSidebar,
+  AdminNavBar,
 };

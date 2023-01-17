@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const AdminNavBar = ({ session }: any) => {
   return (
-    <div className="navbar bg-[#13005A] text-primary-content">
+    <div className="navbar bg-[#13005A] text-primary-content px-5">
       <div className="navbar-start"></div>
       <div className="navbar-center hidden lg:flex">
         <div className="form-control">

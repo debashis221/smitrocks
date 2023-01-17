@@ -46,18 +46,6 @@ const AdminSidebar = () => {
                 />
               </div>
               <hr className="my-2 text-gray-600" />
-              <div>
-                <div
-                  className="p-2.5 mt-3 flex items-center rounded-md 
-  px-4 duration-300 cursor-pointer  bg-gray-700"
-                >
-                  <BsSearch className="text-sm" />
-                  <input
-                    className="text-[15px] ml-4 w-full bg-transparent focus:outline-none"
-                    placeholder="Serach"
-                  />
-                </div>
-              </div>
             </div>
           </div>
         </div>

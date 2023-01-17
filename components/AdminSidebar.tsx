@@ -26,13 +26,13 @@ const AdminSidebar = () => {
             className="absolute text-white text-4xl top-5 left-4 cursor-pointer"
             onClick={() => setOpen(!open)}
           >
-            <BsFilterLeft className="px-2 bg-gray-900 rounded-md" />
+            <BsFilterLeft className="px-2 bg-secondary rounded-md" />
           </span>
           <div
             className={`sidebar fixed top-0 bottom-0 lg:left-0 ${
               open ? "" : "left-[-300px]"
             }  duration-1000
-    p-2 w-[300px] overflow-y-auto text-center bg-gray-900 shadow h-screen`}
+    p-2 w-[300px] overflow-y-auto text-center bg-secondary shadow h-screen`}
           >
             <div className="text-gray-100 text-xl">
               <div className="p-2.5 mt-1 flex items-center rounded-md ">

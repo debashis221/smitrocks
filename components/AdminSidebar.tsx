@@ -32,7 +32,7 @@ const AdminSidebar = () => {
             className={`sidebar fixed top-0 bottom-0 lg:left-0 ${
               open ? "" : "left-[-300px]"
             }  duration-1000
-    p-2 w-[300px] overflow-y-auto text-center bg-secondary shadow h-screen`}
+    p-2 w-[300px] overflow-y-auto text-center bg-[#13005A] shadow h-screen`}
           >
             <div className="text-gray-100 text-xl">
               <div className="p-2.5 mt-1 flex items-center rounded-md ">

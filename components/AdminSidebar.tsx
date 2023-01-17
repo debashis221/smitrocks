@@ -4,7 +4,7 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { RxCross1 } from "react-icons/rx";
-import { BsFilterLeft, BsSearch } from "react-icons/bs";
+import { BsFilterLeft } from "react-icons/bs";
 import AdminNavBar from "./AdminNavBar";
 
 const AdminSidebar = () => {

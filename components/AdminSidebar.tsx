@@ -6,10 +6,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-const AdminSidebar = async () => {
+const AdminSidebar = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
-  const user = await fetchSingleUser(session?.user?.email as string);
+  const user = fetchSingleUser(session?.user?.email as string);
   if (typeof window === "undefined") return null;
   if (status === "loading") {
     return <p className="text-center">Loading...</p>;

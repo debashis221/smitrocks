@@ -3,7 +3,7 @@ import { signOut } from "next-auth/react";
 
 const AdminNavBar = ({ session }: any) => {
   return (
-    <div className="navbar bg-[#13005A] text-primary-content px-5">
+    <div className="navbar bg-[#13005A] text-primary-content px-5 fixed">
       <div className="navbar-start"></div>
       <div className="navbar-center hidden lg:flex">
         <div className="form-control">
@@ -60,7 +60,7 @@ const AdminNavBar = ({ session }: any) => {
             </label>
             <ul
               tabIndex={0}
-              className="dropdown-content menu p-2 shadow rounded-box w-52 bg-white"
+              className="dropdown-content menu p-2 shadow rounded-box w-52 bg-white z-10"
             >
               <li>
                 <a>Profile</a>

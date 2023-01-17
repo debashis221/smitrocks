@@ -63,7 +63,7 @@ const AdminNavBar = ({ session }: any) => {
               className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li onClick={() => signOut()}>
-                <a>Logout</a>
+                <a className="text-white">Logout</a>
               </li>
             </ul>
           </div>

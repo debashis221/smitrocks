@@ -1,5 +1,4 @@
-// http.ts
-
+//
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 
 enum StatusCode {
@@ -16,14 +15,12 @@ const headers: Readonly<Record<string, string | boolean>> = {
   "X-Requested-With": "XMLHttpRequest",
 };
 
-// We can use the following function to inject the JWT token through an interceptor
-// We get the `accessToken` from the localStorage that we set when we authenticate
 const injectToken = (config: AxiosRequestConfig): AxiosRequestConfig => {
   try {
     const token = localStorage.getItem("accessToken");
 
     if (token != null) {
-      config.headers.Authorization = `Bearer ${token}`;
+      config?.headers?.Authorization = `Bearer ${token}`;
     }
     return config;
   } catch (error) {
@@ -97,26 +94,20 @@ class Http {
     return this.http.delete<T, R>(url, config);
   }
 
-  // Handle global app errors
-  // We can handle generic app errors depending on the status code
   private handleError(error) {
     const { status } = error;
 
     switch (status) {
       case StatusCode.InternalServerError: {
-        // Handle InternalServerError
         break;
       }
       case StatusCode.Forbidden: {
-        // Handle Forbidden
         break;
       }
       case StatusCode.Unauthorized: {
-        // Handle Unauthorized
         break;
       }
       case StatusCode.TooManyRequests: {
-        // Handle TooManyRequests
         break;
       }
     }
